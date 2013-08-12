@@ -1,0 +1,572 @@
+/* 
+  Localizable.strings
+  Visual Shopping List
+
+  Created by Julian Lubenov on 8/9/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+
+"tomatoes"="помидоры";
+"potatoes"="картофель";
+"carrots"="морковь";
+"cabbage"="капуста";
+"cauliflower"="цветная капуста";
+"beetroot"="свекла";
+"onion"="лук";
+"pepper"="перец";
+"corn"="кукуруза";
+"broccoli"="брокколи";
+"cucumbers"="огурцы";
+"eggplant"="баклажан";
+"kidney beans"="фасоль";
+"green beans"="зеленая фасоль";
+"lettuce"="салат-латук";
+"mushrooms"="грибы";
+"spinach"="шпинат";
+"lentils"="чечевица";
+"pumpkin"="тыква";
+"okra"="бамия";
+"other vegetable"="другие овощи";
+    
+"eggs"="яйца";
+"milk"="молоко";
+"cheese"="сыр";
+"bread"="хлеб";
+"meat"="мясо";
+"yogurt"="йогурт";
+"cream"="крем";
+"pasta"="макаронные изделия";
+"caviar"="икра";
+"fish"="рыба";
+"flour"="муки";
+"rice"="рис";
+"other base food"="другой кормовой базы";
+    
+"apple"="яблоко";
+"blackberries"="ежевики";
+"plums"="сливы";
+"melon"="дыня";
+"cherries"="вишня";
+"lemons"="лимоны";
+"orange"="апельсин";
+"pears"="груши";
+"peaches"="персики";
+"apricots"="абрикосы";
+"pineapple"="ананас";
+"mango"="манго";
+"bananas"="бананы";
+"watermelon"="арбуз";
+"grapefruit"="грейпфрут";
+"other fruit"="другие фрукты";
+    
+"oil"="масло";
+"vinegar"="уксус";
+"salt"="соль";
+"pepper spice"="перец специи";
+"cinnamon"="корица";
+"dill"="укроп";
+"vanilla"="ваниль";
+"basil"="базилик";
+"aniseed"="анисовое семя";
+"spearmint"="мята";
+"caraway"="тмин";
+"cardamom"="кардамон";
+"rosemary"="розмарин";
+"nutmeg"="мускатный орех";
+"cumin"="тмином";
+"curcuma"="куркума";
+"sumac"="сумах";
+"parsley"="петрушка";
+"celery"="сельдерей";
+"lovage"="любисток";
+"thyme"="тимьян";
+"ginger"="имбирь";
+"oregano"="орегано";
+"saffron"="шафран";
+"other spice"="другие специи";
+    
+"beer"="пиво";
+"wine"="вино";
+"vodka"="водка";
+"wiskey"="виски";
+"juice"="сок";
+"rakiya"="ракия";
+"coffee"="кофе";
+"tea"="чай";
+"sake"="сакэ";
+"ouzo"="узо";
+"tequila"="текила";
+"brendy"="бренды";
+"martini"="мартини";
+"other drink"="другой напиток";
+    
+"food"="питание";
+"medical"="медицинский";
+"books"="книги";
+"bath and cleaning"="ванна и очистка";
+"clothing"="одежди";
+"cars"="автомобилей";
+"shoes"="обувь";
+"games"="игры";
+"computers"="компьютеры";
+"something else"="другое";
+
+"use_system_locale"="Используйте системную локализацию";
+
+"empty"="Список пуст.\n Добавить продукты к нему.";
+"add_item"="Добавить пункт";
+"enter_item_name"="Введите имя элемента";
+
+"description"="Профессиональные разработчики, делающие успехи в мире мобильных приложений.";
+
+"clear"="Очистить все";
+"check_all"="Выбрать все";
+"choose_language"="Выберите язык";
+
+"get_list_title"="Список";
+"base_food_title"="Основная";
+"vegetables_title"="Овощи";
+"fruits_title"="Фрукты";
+"spices_title"="Специи";
+"drinks_title"="Напитки";
+"categories_title"="Категории";
+"change_language_title"="Сменить язык для этого приложения";
+"about_title"="Информация";
+
+"shopping_list"="Список";
+"items_list_title"="Список";
+
+"ok"="Хорошо";
+"enter"="Вводить";
+"cancel"="Отменить";
+
+"delete_question"="Вы хотите удалить этот элемент?";
+"delete"="Удалить";
+
+"about_us"="О нас";
+"contact_us"="Контактах";
+"share_this_app"="Отправить другу";
+
+"tomatoes_en"="tomatoes";
+"potatoes_en"="potatoes";
+"carrots_en"="carrots";
+"cabbage_en"="cabbage";
+"cauliflower_en"="cauliflower";
+"beetroot_en"="beetroot";
+"onion_en"="onion";
+"pepper_en"="pepper";
+"corn_en"="corn";
+"broccoli_en"="broccoli";
+"cucumbers_en"="cucumbers";
+"eggplant_en"="eggplant";
+"kidney beans_en"="kidney beans";
+"green beans_en"="green beans";
+"lettuce_en"="lettuce";
+"mushrooms_en"="mushrooms";
+"spinach_en"="spinach";
+"lentils_en"="lentils";
+"pumpkin_en"="pumpkin";
+"okra_en"="okra";
+"other vegetable_en"="other vegetable";
+
+"eggs_en"="eggs";
+"milk_en"="milk";
+"cheese_en"="cheese";
+"bread_en"="bread";
+"meat_en"="meat";
+"yogurt_en"="yogurt";
+"cream_en"="cream";
+"pasta_en"="pasta";
+"caviar_en"="caviar";
+"fish_en"="fish";
+"flour_en"="flour";
+"rice_en"="rice";
+"other base food_en"="other base food";
+
+"apple_en"="apple";
+"blackberries_en"="blackberries";
+"plums_en"="plums";
+"melon_en"="melon";
+"cherries_en"="cherries";
+"lemons_en"="lemons";
+"orange_en"="orange";
+"pears_en"="pears";
+"peaches_en"="peaches";
+"apricots_en"="apricots";
+"pineapple_en"="pineapple";
+"mango_en"="mango";
+"bananas_en"="bananas";
+"watermelon_en"="watermelon";
+"grapefruit_en"="grapefruit";
+"other fruit_en"="other fruit";
+
+"oil_en"="oil";
+"vinegar_en"="vinegar";
+"salt_en"="salt";
+"pepper spice_en"="pepper spice";
+"cinnamon_en"="cinnamon";
+"dill_en"="dill";
+"vanilla_en"="vanilla";
+"basil_en"="basil";
+"aniseed_en"="aniseed";
+"spearmint_en"="spearmint";
+"caraway_en"="caraway";
+"cardamom_en"="cardamom";
+"rosemary_en"="rosemary";
+"nutmeg_en"="nutmeg";
+"cumin_en"="cumin";
+"curcuma_en"="curcuma";
+"sumac_en"="sumac";
+"parsley_en"="parsley";
+"celery_en"="celery";
+"lovage_en"="lovage";
+"thyme_en"="thyme";
+"ginger_en"="ginger";
+"oregano_en"="oregano";
+"saffron_en"="saffron";
+"other spice_en"="other spice";
+
+"beer_en"="beer";
+"wine_en"="wine";
+"vodka_en"="vodka";
+"wiskey_en"="wiskey";
+"juice_en"="juice";
+"rakiya_en"="rakiya";
+"coffee_en"="coffee";
+"tea_en"="tea";
+"sake_en"="sake";
+"ouzo_en"="ouzo";
+"tequila_en"="tequila";
+"brendy_en"="brendy";
+"martini_en"="martini";
+"other drink_en"="other drink";
+
+"food_en"="food";
+"medical_en"="medical";
+"books_en"="books";
+"bath and cleaning_en"="bath and cleaning";
+"clothing_en"="clothing";
+"cars_en"="cars";
+"shoes_en"="shoes";
+"games_en"="games";
+"computers_en"="computers";
+"something else_en"="something else";
+
+"use_system_locale_en"="Use system localization";
+
+"empty_en"="The list is empty.\nAdd products to it.";
+"add_item_en"="Add new item";
+"enter_item_name_en"="Enter item name";
+
+"description_en"="Professional developers making progress in the world of mobile apps.";
+
+"clear_en"="Clear All";
+"check_all_en"="Check All";
+"choose_language_en"="Choose Language";
+
+"get_list_title_en"="Get List";
+"base_food_title_en"="Base Food";
+"vegetables_title_en"="Vegetables";
+"fruits_title_en"="Fruits";
+"spices_title_en"="Spices";
+"drinks_title_en"="Drinks";
+"categories_title_en"="Categories";
+"change_language_title_en"="Change language for this app";
+"about_title_en"="About";
+
+"shopping_list_en"="Shopping List";
+"items_list_title_en"="Items List";
+
+"ok_en"="OK";
+"enter_en"="Enter";
+"cancel_en"="Cancel";
+
+"delete_question_en"="Do you want to delete this item?";
+"delete_en"="Delete";
+
+"about_us_en"="About Us";
+"contact_us_en"="Contact Us";
+"share_this_app_en"="Share this app";
+
+"tomatoes_ru"="помидоры";
+"potatoes_ru"="картофель";
+"carrots_ru"="морковь";
+"cabbage_ru"="капуста";
+"cauliflower_ru"="цветная капуста";
+"beetroot_ru"="свекла";
+"onion_ru"="лук";
+"pepper_ru"="перец";
+"corn_ru"="кукуруза";
+"broccoli_ru"="брокколи";
+"cucumbers_ru"="огурцы";
+"eggplant_ru"="баклажан";
+"kidney beans_ru"="фасоль";
+"green beans_ru"="зеленая фасоль";
+"lettuce_ru"="салат-латук";
+"mushrooms_ru"="грибы";
+"spinach_ru"="шпинат";
+"lentils_ru"="чечевица";
+"pumpkin_ru"="тыква";
+"okra_ru"="бамия";
+"other vegetable_ru"="другие овощи";
+
+"eggs_ru"="яйца";
+"milk_ru"="молоко";
+"cheese_ru"="сыр";
+"bread_ru"="хлеб";
+"meat_ru"="мясо";
+"yogurt_ru"="йогурт";
+"cream_ru"="крем";
+"pasta_ru"="макаронные изделия";
+"caviar_ru"="икра";
+"fish_ru"="рыба";
+"flour_ru"="муки";
+"rice_ru"="рис";
+"other base food_ru"="другой кормовой базы";
+
+"apple_ru"="яблоко";
+"blackberries_ru"="ежевики";
+"plums_ru"="сливы";
+"melon_ru"="дыня";
+"cherries_ru"="вишня";
+"lemons_ru"="лимоны";
+"orange_ru"="апельсин";
+"pears_ru"="груши";
+"peaches_ru"="персики";
+"apricots_ru"="абрикосы";
+"pineapple_ru"="ананас";
+"mango_ru"="манго";
+"bananas_ru"="бананы";
+"watermelon_ru"="арбуз";
+"grapefruit_ru"="грейпфрут";
+"other fruit_ru"="другие фрукты";
+
+"oil_ru"="масло";
+"vinegar_ru"="уксус";
+"salt_ru"="соль";
+"pepper spice_ru"="перец специи";
+"cinnamon_ru"="корица";
+"dill_ru"="укроп";
+"vanilla_ru"="ваниль";
+"basil_ru"="базилик";
+"aniseed_ru"="анисовое семя";
+"spearmint_ru"="мята";
+"caraway_ru"="тмин";
+"cardamom_ru"="кардамон";
+"rosemary_ru"="розмарин";
+"nutmeg_ru"="мускатный орех";
+"cumin_ru"="тмином";
+"curcuma_ru"="куркума";
+"sumac_ru"="сумах";
+"parsley_ru"="петрушка";
+"celery_ru"="сельдерей";
+"lovage_ru"="любисток";
+"thyme_ru"="тимьян";
+"ginger_ru"="имбирь";
+"oregano_ru"="орегано";
+"saffron_ru"="шафран";
+"other spice_ru"="другие специи";
+
+"beer_ru"="пиво";
+"wine_ru"="вино";
+"vodka_ru"="водка";
+"wiskey_ru"="виски";
+"juice_ru"="сок";
+"rakiya_ru"="ракия";
+"coffee_ru"="кофе";
+"tea_ru"="чай";
+"sake_ru"="сакэ";
+"ouzo_ru"="узо";
+"tequila_ru"="текила";
+"brendy_ru"="бренды";
+"martini_ru"="мартини";
+"other drink_ru"="другой напиток";
+
+"food_ru"="питание";
+"medical_ru"="медицинский";
+"books_ru"="книги";
+"bath and cleaning_ru"="ванна и очистка";
+"clothing_ru"="одежди";
+"cars_ru"="автомобилей";
+"shoes_ru"="обувь";
+"games_ru"="игры";
+"computers_ru"="компьютеры";
+"something else_ru"="другое";
+
+"use_system_locale_ru"="Используйте системную локализацию";
+
+"empty_ru"="Список пуст.\n Добавить продукты к нему.";
+"add_item_ru"="Добавить пункт";
+"enter_item_name_ru"="Введите имя элемента";
+
+"description_ru"="Профессиональные разработчики, делающие успехи в мире мобильных приложений.";
+
+"clear_ru"="Очистить все";
+"check_all_ru"="Выбрать все";
+"choose_language_ru"="Выберите язык";
+
+"get_list_title_ru"="Список";
+"base_food_title_ru"="Основная";
+"vegetables_title_ru"="Овощи";
+"fruits_title_ru"="Фрукты";
+"spices_title_ru"="Специи";
+"drinks_title_ru"="Напитки";
+"categories_title_ru"="Категории";
+"change_language_title_ru"="Сменить язык для этого приложения";
+"about_title_ru"="Информация";
+
+"shopping_list_ru"="Список";
+"items_list_title_ru"="Список";
+
+"ok_ru"="Хорошо";
+"enter_ru"="Вводить";
+"cancel_ru"="Отменить";
+
+"delete_question_ru"="Вы хотите удалить этот элемент?";
+"delete_ru"="Удалить";
+
+"about_us_ru"="О нас";
+"contact_us_ru"="Контактах";
+"share_this_app_ru"="Отправить другу";
+
+"tomatoes_bg"="домати";
+"potatoes_bg"="картофи";
+"carrots_bg"="моркови";
+"cabbage_bg"="зеле";
+"cauliflower_bg"="карфиол";
+"beetroot_bg"="цвекло";
+"onion_bg"="лук";
+"pepper_bg"="пипер";
+"corn_bg"="царевица";
+"broccoli_bg"="броколи";
+"cucumbers_bg"="краставици";
+"eggplant_bg"="патладжан";
+"kidney beans_bg"="боб";
+"green beans_bg"="зелен боб";
+"lettuce_bg"="маруля";
+"mushrooms_bg"="гъби";
+"spinach_bg"="спанак";
+"lentils_bg"="леща";
+"pumpkin_bg"="тиква";
+"okra_bg"="бамя";
+"other vegetable_bg"="други зеленчуци";
+
+"eggs_bg"="яйца";
+"milk_bg"="мляко";
+"cheese_bg"="сирене";
+"bread_bg"="хляб";
+"meat_bg"="месо";
+"yogurt_bg"="кисело мляко";
+"cream_bg"="сметана";
+"pasta_bg"="тестени изделия";
+"caviar_bg"="хайвер";
+"fish_bg"="риба";
+"flour_bg"="брашно";
+"rice_bg"="ориз";
+"other base food_bg"="други храни";
+
+"apple_bg"="ябълки";
+"blackberries_bg"="боровинки";
+"plums_bg"="сливи";
+"melon_bg"="пъпеш";
+"cherries_bg"="череши";
+"lemons_bg"="лимони";
+"orange_bg"="портокали";
+"pears_bg"="круши";
+"peaches_bg"="праскови";
+"apricots_bg"="кайсии";
+"pineapple_bg"="ананас";
+"mango_bg"="манго";
+"bananas_bg"="банани";
+"watermelon_bg"="диня";
+"grapefruit_bg"="грейпфрут";
+"other fruit_bg"="други плодове";
+
+"oil_bg"="олио";
+"vinegar_bg"="оцет";
+"salt_bg"="сол";
+"pepper spice_bg"="пипер";
+"cinnamon_bg"="канела";
+"dill_bg"="копър";
+"vanilla_bg"="ванилия";
+"basil_bg"="босилек";
+"aniseed_bg"="анасон";
+"spearmint_bg"="мента";
+"caraway_bg"="ким";
+"cardamom_bg"="кардамон";
+"rosemary_bg"="розмарин";
+"nutmeg_bg"="индийско орехче";
+"cumin_bg"="кимион";
+"curcuma_bg"="куркума";
+"sumac_bg"="смрадлика";
+"parsley_bg"="магданоз";
+"celery_bg"="целина";
+"lovage_bg"="девисил";
+"thyme_bg"="мащерка";
+"ginger_bg"="джинджифил";
+"oregano_bg"="риган";
+"saffron_bg"="шафран";
+"other spice_bg"="други подправки";
+
+"beer_bg"="бира";
+"wine_bg"="вино";
+"vodka_bg"="водка";
+"wiskey_bg"="уиски";
+"juice_bg"="сок";
+"rakiya_bg"="ракия";
+"coffee_bg"="кафе";
+"tea_bg"="чай";
+"sake_bg"="саке";
+"ouzo_bg"="узо";
+"tequila_bg"="текила";
+"brendy_bg"="бренди";
+"martini_bg"="мартини";
+"other drink_bg"="друга напитка";
+
+"food_bg"="храна";
+"medical_bg"="медицински";
+"books_bg"="книги";
+"bath and cleaning_bg"="баня и почистване";
+"clothing_bg"="облекло";
+"cars_bg"="автомобили";
+"shoes_bg"="обувки";
+"games_bg"="игри";
+"computers_bg"="компютри";
+"something else_bg"="нещо друго";
+
+"use_system_locale_bg"="Използвай системната локализация";
+
+"empty_bg"="Списъкът е празен.\nДобави продукти към него.";
+"add_item_bg"="Добави продукт";
+"enter_item_name_bg"="Въведете име на продукт";
+
+"description_bg"="Професионални програмисти които правят прогрес в света на мобилните приложения.";
+
+"clear_bg"="Изчисти всичко";
+"check_all_bg"="Чекни всичко";
+"choose_language_bg"="Избери език";
+
+"get_list_title_bg"="Списък";
+"base_food_title_bg"="Основни";
+"vegetables_title_bg"="Зеленчуци";
+"fruits_title_bg"="Плодове";
+"spices_title_bg"="Подправки";
+"drinks_title_bg"="Напитки";
+"categories_title_bg"="Категории";
+"change_language_title_bg"="Промени езика на това приложение";
+"about_title_bg"="Информация";
+
+"shopping_list_bg"="Списък";
+"items_list_title_bg"="Списък";
+
+"ok_bg"="Добре";
+"enter_bg"="Въведете";
+"cancel_bg"="Отказ";
+
+"delete_question_bg"="Искате ли да изтриете този продукт?";
+"delete_bg"="Изтрий";
+
+"about_us_bg"="За нас";
+"contact_us_bg"="Контакти";
+"share_this_app_bg"="Споделете с приятели";
+

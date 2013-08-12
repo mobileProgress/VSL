@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Item" syncable="YES">
+        <attribute name="item_category" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item_icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="item_local" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="item_name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Item" positionX="160" positionY="192" width="128" height="105"/>
+    </elements>
+</model>

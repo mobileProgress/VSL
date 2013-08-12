@@ -1,0 +1,68 @@
+/* Localized versions of Info.plist keys */
+
+"hello" = "Hello World, EasyShoppingActivity!";
+"app_name" = "EasyShopping";
+"get_list" = "Get List";
+"vegitables" = "Vegitables";
+"base_food" = "Base Food";
+"fruits" = "Fruits";
+"website" = "website: http://mobileprogressive.com";
+"phone" = "";
+"email" = "email: support@mobileprogressive.com";
+
+"vegetables" = "vegetables";
+"tomatoes" = "tomatoes";
+"potatoes" = "potatoes";
+"carrots" = "carrots";
+"cabbage" = "cabbage";
+"cauliflower" = "cauliflower";
+"beetroot" = "beetroot";
+"onion" = "onion";
+"pepper" = "pepper";
+"corn" = "corn";
+
+"base_food" = "base_food";
+"eggs" = "eggs";
+"milk" = "milk";
+"cheese" = "cheese";
+"bread" = "bread";
+"meat" = "meat";
+"yogurt" = "yogurt";
+"cream" = "cream";
+
+"fruits" = "fruits";
+"apple" = "apple";
+"blackberries" = "blackberries";
+"plums" = "plums";
+"melon" = "melon";
+"cherries" = "cherries";
+"lemons" = "lemons";
+"orange" = "orange";
+"pears" = "pears";
+"peaches" = "peaches";
+"apricots" = "apricots";
+"pineapple" = "pineapple";
+
+
+"spices" = "spices";
+"oil" = "oil";
+"vinegar" = "vinegar";
+"salt" = "salt";
+"pepper" = "pepper";
+"cinnamon" = "cinnamon";
+"dill" = "dill";
+
+
+"drinks" = "drinks";
+"beer" = "beer";
+"wine" = "wine";
+"vodka" = "vodka";
+"wiskey" = "wiskey";
+"juice" = "juice";
+"rakiya" = "rakiya";
+"coffee" = "coffee";
+"tea" = "tea";
+
+"company_name" = "Mobile ProGressive";
+"description" = "Professional mobile developers making progress in the world of mobile apps.";
+
