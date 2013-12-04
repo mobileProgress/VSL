@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Visual Shopping List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link href="css/mp.css" rel="stylesheet" type="text/css" />
+    <link href="css/vsl.css" rel="stylesheet" type="text/css" />
+
+    <meta name="description" content="" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+
+
+  <div class="mp_screen" id="vsl_products">
+    <div class="mp_title_bar">
+      <div class="mp_bar_back_button">
+    	<a href="#" onClick="mpWin.popControllerView(false);">Back</a>
+      </div>
+      <!-- <div class="mp_bar_button">
+    	<a href="#">Select All</a>
+      </div> -->
+      <div class="mp_bar_title">Products</div>
+    </div>
+    <ul class="mp_list" id="vsl_products">
+    </ul>
+  </div>
+  <div class="mp_window">
+    <div class="mp_screen" id="vsl_ViewController">
+      <div class="vsl_category_row">
+	<a href="#" onClick="pushProduct(0)">
+	<div class="vsl_category" id="btn_getlist">
+	  <h2>Get List</h2>
+	</div>
+	</a>
+      </div>
+      <div class="vsl_category_row">
+	<a href="#" onClick="pushProduct(2)">
+	<div class="vsl_category_left" id="btn_basefood">
+	  <h2>Base Food</h2>
+	</div>
+	</a>
+	<a href="#" onClick="pushProduct(1)">
+	<div class="vsl_category_right" id="btn_vegetables">
+	  <h2>Vegetables</h2>
+	</div>
+	</a>
+      </div>
+      <div class="vsl_category_row">
+	<a href="#" onClick="pushProduct(3)">
+	<div class="vsl_category_left" id="btn_fruits">
+	  <h2>Fruits</h2>
+	</div>
+	</a>
+	<a href="#" onClick="pushProduct(4)">
+	<div class="vsl_category_right" id="btn_spices">
+	  <h2>Spices</h2>
+	</div>
+	</a>
+      </div>
+      <div class="vsl_category_row">
+	<a href="#" onClick="pushProduct(5)">
+	<div class="vsl_category_left" id="btn_drinks">
+	  <h2>Drinks</h2>
+	</div>
+	</a>
+	<a href="#" onClick="pushProduct(6)">
+	<div class="vsl_category_right" id="btn_categories">
+	  <h2>Categories</h2>
+	</div>
+	</a>
+      </div>
+      <!-- <div class="vsl_main_footer">
+	<div id="language_btn">
+	  <h2>Change language </br> for this app</h2>
+	</div>
+	<div id="btn_about_us">
+	</div>
+      </div> -->
+    </div>
+  </div>
+  <script src="js/persist.js"></script>
+  <script src="js/mp_ui.js"></script>
+  <script src="js/itemsjson.js"></script>
+  <script src="js/ItemsController.js"></script>
+  <script src="js/vsl.js"></script>
+</body>

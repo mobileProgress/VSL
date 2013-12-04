@@ -1,0 +1,146 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    text-shadow: 0px 1px 0px rgb(255, 255, 255);
+    background: rgb(230, 230, 230); 
+    padding: 0px;
+    margin: 0px;
+}
+
+.mp_screen {
+    position:absolute;
+    width: 100%;
+    overflow: hidden;
+    oberflow-x: hidden;
+    padding-top: 44px;
+    background: gray;
+}
+
+.mp_window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    oberflow-x: hidden;
+    background: gray;
+    padding: 0px;
+    margin: 0px;
+    z-index: 1000;
+}
+
+.mp_title_bar {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left:0px;
+    right: 0px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 44px;
+
+/*border:1px solid #333;*/
+background:#111;
+color:#fff;
+font-weight:700;
+text-shadow:0 -1px 0 #000;
+
+    filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#FFE5E5E5, EndColorStr=#FFFFFFFF);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#ccc),to(#111));
+    background-image: -webkit-linear-gradient(#ccc,#111);
+    background-image: -webkit-linear-gradient(top, #ccc 0%, #111 100%); 
+    background-image: -moz-linear-gradient(#ccc,#111);
+    background-image: -moz-linear-gradient(top , #ccc 0%, #111 100%);
+    background-image: -ms-linear-gradient(#ccc,#111);
+    background-image: -ms-linear-gradient(top, #ccc 0%, #111 100%);
+    background-image: -o-linear-gradient(#ccc,#111);
+    background-image: -o-linear-gradient(top, #ccc 0%, #111 100%);
+    background-image: linear-gradient(#ccc,#111)
+    background-image: linear-gradient(to bottom, #ccc 0%, #111 100%);
+
+}
+
+.mp_bar_title {
+    padding-top: 10px;
+    text-align: center;
+    vertical-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mp_bar_back_button {
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #777;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #777;
+    border-bottom: 1px solid #777;
+    border-radius:5px;
+    padding-top:6px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:4px;
+    color: white;
+    float:left;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.mp_bar_button {
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #777;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #777;
+    border-bottom: 1px solid #777;
+    border-radius:5px;
+    padding-top:6px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:4px;
+    color:white;
+    float:right;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.mp_list {
+    list-style: none;
+    border-bottom: 1px solid #333;
+    margin: 0px;
+    width: 100%;
+    padding: 0px;
+
+
+}
+
+.mp_list_item {
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    height: 20px;
+    padding: 10px;
+
+
+}
+
+.mp_list_item img {
+    clear:both;
+    float:left;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    height: 30px;
+    margin-top: -5px;
+    margin-left: -5px;
+    margin-right: 5px;
+}
+
+.vls_base_product {
+}
+
+
