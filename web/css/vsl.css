@@ -38,6 +38,7 @@ div#vsl_products {
     margin-top: 0px;
     left: 0px;
     transition: left 0.3s ease-in;
+    background: white;
 }
 
 div#vsl_ViewController {

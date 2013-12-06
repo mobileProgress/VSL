@@ -107,6 +107,13 @@ function ItemsController(itemsTypeArg) {
     this.deleteItem = deleteItem;
     this.itemsSort = itemsSort;
 
+    this.checkDoubleClickAtRow = checkDoubleClickAtRow;
+    this.commitDeleteForRow = commitDeleteForRow;
+    this.deleteItem = deleteItem;
+
+    this.lastClickRow = 0;
+    this.lastClickTime = 0;
+
     function localized(keyString) {
 	return keyString;
     }
@@ -132,12 +139,14 @@ function ItemsController(itemsTypeArg) {
 	listTable = this.mp_view.children(".mp_list");
 //	this.mp_view = $("#vsl_products");
 	listTable.delegate = this;
+	rightButton = this.mp_view.children(".mp_title_bar").children(".mp_bar_button");
 
 	// Do any additional setup after loading the view.
     
 	title.text(this.localized("items_list_title"));
 	
 	// self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"clear") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
+	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (this.localized("clear")) + "</a>");
 	
 	this.vegetables = new Array();
 	this.base_food = new Array();
@@ -155,6 +164,8 @@ function ItemsController(itemsTypeArg) {
         case kESGetList:
             this.loadGetList();
             //self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"check_all") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
+	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (this.localized("check_all")) + "</a>");
+	    
             title.text(this.localized("shopping_list"));
             break;
         case kESVegetables:
@@ -211,7 +222,7 @@ function ItemsController(itemsTypeArg) {
 
     function cellForRowCol(listTable, row, col)
     {
-	var cell = "<li class=\"mp_list_item vls_base_product\">";
+	var cell = "<li class=\"mp_list_item vls_base_product\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
 	if(row == this.listArray.length)
 	{
             cell += this.localized("add_item");
@@ -251,11 +262,11 @@ function ItemsController(itemsTypeArg) {
 	
 	if(checked)
 	{
-	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check.png\" alt=\"check_box\" onClick=\"listTable.delegate.didSelectRow("+ row +");\" /></a>";
+	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check.png\" alt=\"check_box\" /></a>";
 	}
 	else
 	{
-	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check_empty.png\" alt=\"check_box\" onClick=\"listTable.delegate.didSelectRow("+ row +");\" /></a>";
+	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check_empty.png\" alt=\"check_box\" /></a>";
 	}
 	
 	cell = cell + "</li>";
@@ -268,12 +279,20 @@ function ItemsController(itemsTypeArg) {
 
     function tableViewDidSelectRow(tableView, row)
     {
+	if(this.checkDoubleClickAtRow(row))
+	{
+	    return;
+	}
 	if(row == this.listArray.length)
 	{   
             // MProAlertView *view = [[MProAlertView alloc] initWithTitle:localized(@"add_item") message:[NSString stringWithFormat:@"%@ \n\n\n", localized(@"enter_item_name")] delegate:self cancelButtonTitle:localized(@"cancel") otherButtonTitles:localized(@"enter"), nil];
             
             // [view show];
-	    alert(this.localized("add_item") + this.localized("enter_item_name"));
+	    var item_name = prompt(this.localized("add_item") + this.localized("enter_item_name"));
+	    if(item_name)
+	    {
+		this.alertViewButtonAtIndex(item_name, 1)
+	    }
             
             return;
 	}
@@ -299,7 +318,7 @@ function ItemsController(itemsTypeArg) {
 	
     }
 
-    function alertViewButtonAtIndex(alertView, buttonIndex)
+    function alertViewButtonAtIndex(alertViewText, buttonIndex)
     {
 	
 	if(buttonIndex == 0)
@@ -308,10 +327,7 @@ function ItemsController(itemsTypeArg) {
 	}
 	
 	var error;
-	var itemName = alertView.text;//[((MProAlertView *)alertView) textView].text;
-	var documentsDirectory = 0;//[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	var jsonString = 0;//[NSString stringWithContentsOfFile:[documentsDirectory stringByAppendingFormat:@"/db.json"] encoding:NSUTF8StringEncoding error:&error];
-	var root = 0;//[[[jsonString objectFromJSONString] mutableCopy] autorelease];
+	var itemName = alertViewText;
 	var categoryKey = "categories";
 	var categoryIconKey = "categories_icons";
 	switch (this.itemsType) {
@@ -344,34 +360,40 @@ function ItemsController(itemsTypeArg) {
             break;
 	}
 	
-	// NSMutableArray *array = [[[root objectForKey:categoryKey] mutableCopy] autorelease];
-	// [array addObject:itemName];
-	// [root setObject:array forKey:categoryKey];
-	// array = [[[root objectForKey:categoryIconKey] mutableCopy] autorelease];
-	// [array addObject:[itemName stringByAppendingFormat:@".png"]];
-	// [root setObject:array forKey:categoryIconKey];
-	// NSString *resultString = [root JSONString];
-	// [resultString writeToFile:[documentsDirectory stringByAppendingFormat:@"/db.json"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
+	var array = JSON.parse(readCookie(categoryKey));
+	array[array.length] = (itemName);
+	createCookie(categoryKey, JSON.stringify(array),0);
+	array = JSON.parse(readCookie(categoryIconKey));
+	array[array.length] = (itemName + ".png");
+	createCookie(categoryIconKey, JSON.stringify(array),0);
+
 	
-	// NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-	// [defs setBool:YES forKey:[itemName stringByAppendingFormat:@"_flag"]];
-	// [defs setBool:NO forKey:[itemName stringByAppendingFormat:@".png"]];
-	// [defs synchronize];
+	createCookie(itemName+"_flag", "true",0);
 	
-	// [self loadDataFromFile:[documentsDirectory stringByAppendingFormat:@"/db.json"]];
+	this.loadData();
 	reloadData(listTable);
 
     }
 
-// - (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-// {
-//     if(editingStyle == UITableViewCellEditingStyleDelete)
-//     {
-//         Item *item = [listArray objectAtIndex:indexPath.row];
-//         [self deleteItem:item];
-//     }
-    
-// }
+    function checkDoubleClickAtRow(row)
+    {
+	if(this.lastClickRow == row && Math.abs(this.lastClickTime - Date.now()) < 500) 
+	{
+
+	    this.commitDeleteForRow(row);
+	    return true;
+	}
+	this.lastClickRow = row;
+	this.lastClickTime = Date.now();
+	return false;
+    }
+
+    function commitDeleteForRow(row)
+    {
+        var item = this.listArray[row];
+
+        this.deleteItem(item);
+    }
 
 //pragma mark private
 
@@ -382,17 +404,17 @@ function ItemsController(itemsTypeArg) {
 	
 	var root = 0;//(NSDictionary *)[jsonString objectFromJSONString];
 	
-	this.vegetables = new Array();
+	this.vegetables.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.vegetables, "vegetables", "vegetables_icons");
-	this.base_food = new Array();
+	this.base_food.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.base_food, "base_food", "base_food_icons");
-	this.fruits = new Array();
+	this.fruits.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.fruits, "fruits", "fruits_icons");
-	this.spices = new Array();
+	this.spices.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.spices, "spices", "spices_icons");
-	this.drinks = new Array();
+	this.drinks.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.drinks, "drinks", "drinks_icons");
-	this.categories = new Array();
+	this.categories.length = 0;
 	this.loadDataFromJsonDictInArray(root, this.categories, "categories", "categories_icons");
 	
     }
@@ -441,75 +463,74 @@ function ItemsController(itemsTypeArg) {
 
     function clearAllItems()
     {
-	for(item in this.listArray)
+	for(i = 0; i < this.listArray.length; ++i)
 	{
-	    createCookie(item.itemIcon, "", 60);
+	    var item = this.listArray[i];
+	    createCookie(item.itemIcon, "", 0);
 	}
 	reloadData(listTable);
     }
 
     function deleteItem(item)
     {
-	// NSError *error;
-        // NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        // NSString *jsonString = [NSString stringWithContentsOfFile:[documentsDirectory stringByAppendingFormat:@"/db.json"] encoding:NSUTF8StringEncoding error:&error];
-        // NSMutableDictionary *root = [[[jsonString objectFromJSONString] mutableCopy] autorelease];
-        // NSString *categoryKey = @"categories";
-        // NSString *categoryIconKey = @"categories_icons";
-        // switch (itemsType) {
-        // case kESVegetables:
-        //     categoryKey = @"vegetables";
-        //     categoryIconKey = @"vegetables_icons";
-        //     break;
-        // case kESBaseFood:
-        //     categoryKey = @"base_food";
-        //     categoryIconKey = @"base_food_icons";
-        //     break;
-        // case kESFruits:
-        //     categoryKey = @"fruits";
-        //     categoryIconKey = @"fruits_icons";
-        //     break;
-        // case kESSpices:
-        //     categoryKey = @"spices";
-        //     categoryIconKey = @"spices_icons";
-        //     break;
-        // case kESDrinks:
-        //     categoryKey = @"drinks";
-        //     categoryIconKey = @"drinks_icons";
-        //     break;
-        // case kESCategories:
-        //     categoryKey = @"categories";
-        //     categoryIconKey = @"categories_icons";
-        //     break;
+        var categoryKey = "categories";
+        var categoryIconKey = "categories_icons";
+        switch (this.itemsType) {
+        case kESVegetables:
+            categoryKey = "vegetables";
+            categoryIconKey = "vegetables_icons";
+            break;
+        case kESBaseFood:
+            categoryKey = "base_food";
+            categoryIconKey = "base_food_icons";
+            break;
+        case kESFruits:
+            categoryKey = "fruits";
+            categoryIconKey = "fruits_icons";
+            break;
+        case kESSpices:
+            categoryKey = "spices";
+            categoryIconKey = "spices_icons";
+            break;
+        case kESDrinks:
+            categoryKey = "drinks";
+            categoryIconKey = "drinks_icons";
+            break;
+        case kESCategories:
+            categoryKey = "categories";
+            categoryIconKey = "categories_icons";
+            break;
             
-        // default:
-        //     break;
-        // }
+        default:
+            break;
+        }
         
-        // NSMutableArray *array = [[[root objectForKey:categoryIconKey] mutableCopy] autorelease];
-        
-        // For(int i = 0; i < [array count]; ++i)
-        // {
-        //     if([[array objectAtIndex:i] isEqualToString:item.itemIcon])
-        //     {
-        //         NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-        //         if([defs boolForKey:[item.name stringByAppendingFormat:@"_flag"]])
-        //         {
-        //             [array removeObjectAtIndex:i];
-        //             [root setObject:array forKey:categoryIconKey];
-        //             array = [[[root objectForKey:categoryKey] mutableCopy] autorelease];
-        //             [array removeObjectAtIndex:i];
-        //             [root setObject:array forKey:categoryKey];
+        var array =  JSON.parse(readCookie(categoryIconKey));
+
+        for(i = 0; i < array.length; ++i)
+        {
+            if(array[i] == item.itemIcon)
+            {
+		if(readCookie(item.name + "_flag"))
+                {
+
+
+		    var result = confirm(this.localized("delete_question"));
+		    if(!result) {
+			return;
+		    }
+
+                    array.splice(i, 1);
+		    createCookie(categoryIconKey, JSON.stringify(array),0);
+		    array =  JSON.parse(readCookie(categoryKey));
+                    array.splice(i, 1);
+		    createCookie(categoryKey, JSON.stringify(array),0);
                     
-        //             NSString *resultString = [root JSONString];
-                    
-        //             [resultString writeToFile:[documentsDirectory stringByAppendingFormat:@"/db.json"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        //             [self loadDataFromFile:[documentsDirectory stringByAppendingFormat:@"/db.json"]];
-        //             [self.listTable reloadData];
-        //             return;
-        //         }
-        //     }
-        // }
+		    this.loadData();
+                    reloadData(listTable);
+                }
+            }
+        }
 
     }
 

@@ -55,6 +55,9 @@ function appLaunched() {
         createCookie("isFirstLaunch", "true", 0);
     }
 
+
+
+
     //Get reference to the window
     mpWin = new MPWindow($(".mp_window .mp_screen"));
 
@@ -71,6 +74,9 @@ function appLaunched() {
 }
 
 function pushProduct(type) {
+    //Get screen width
+    var containerHeight = $(window).height();
+    itemsControllerView.css("min-height", containerHeight+"px");
     var itemsController = new ItemsController(type);
     itemsController.mp_view = itemsControllerView;
     //call at the beginning
