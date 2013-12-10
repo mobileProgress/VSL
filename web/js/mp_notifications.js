@@ -41,74 +41,20 @@
     version without the exceptions above;
 */
 
-var expDays = 60;
-
-function toHex(str) {
-    var hex = '';
-    for(var i=0;i<str.length;i++) {
-        hex += ''+str.charCodeAt(i).toString(16);
-    }
-    return hex;
-}
-
-function fromHex(hex) {
-    var str = '';
-    for(var i=0;i<hex.length;i=i+2) {
-        str += String.fromCharCode(Number("0x" + hex.substring(i, i + 2)));
-    }
-    return str;
-}
 
 /*
- * "createCookie" creates cookie with name "name", value "value" and expiration
- * period "days" days. If "days" equals 0 than expDays constant is used for 
- * the exporation period. If days equals -1 than the cookie is created as 
- * session only without beeing stored.
+ * MPNotifications
  */
-function createCookie(name,value,days) {
-    if(days == 0)
-	days = expDays;
-    if(days == -1)
-	days = 0;
-    value = toHex(value);
-    if (days) {
-	var date = new Date();
-	date.setTime(date.getTime()+(days*24*60*60*1000));
-	var expires = "; expires="+ new Date(date).toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name+"="+value+expires + "; path=/";
-}
-
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-	var c = ca[i];
-	while (c.charAt(0)==' ') c = c.substring(1,c.length);
-	if (c.indexOf(nameEQ) == 0) {
-	    var result = c.substring(nameEQ.length,c.length);
-	    result = fromHex(result);
-	    return result;
-	}
-    }
-    return null;
-}
-
-function eraseCookie(name) {
-    createCookie(name,"",-1);
-}
-
-function enableCookie() {
-    var cookieEnabled=(navigator.cookieEnabled)? true : false
-
-//if not IE4+ nor NS6+
-    if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
-document.cookie="testcookie"
-	cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false
+var mpNotifications = new function MPNotificaions()
+{
+    this.dict = new Object();
+    this.sendNotification = sendNotification;
+    this.registerForNotification = registerForNotification;
+    function sendNotification(notification) {
+	(this.dict[notification])(notification);
     }
 
-//if (cookieEnabled) //if cookies are enabled on client's browser
-//do whatever
-
+    function registerForNotification(receiverfunc, notification) {
+	this.dict[notification] = receiverfunc;
+    }
 }

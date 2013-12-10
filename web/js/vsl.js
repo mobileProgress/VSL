@@ -45,6 +45,9 @@ var mpWin = 0;
 
 var itemsControllerView = 0;
 var viewControllerView = 0;
+var viewController = 0;
+var aboutControllerView = 0;
+var chooseLanguageControllerView = 0;
 
 function appLaunched() {
     //InitCookies
@@ -66,9 +69,21 @@ function appLaunched() {
     var tmpScreen = $("#vsl_products");
     itemsControllerView = tmpScreen.clone();
     tmpScreen.replaceWith("");
-    var tmpScreen = $("#vsl_ViewController");
-    viewControllerView = tmpScreen.clone();
+    tmpScreen = $("#vsl_aboutus");
+    aboutControllerView = tmpScreen.clone();
+    tmpScreen.replaceWith("");
+    tmpScreen = $("#vsl_language");
+    chooseLanguageControllerView = tmpScreen.clone();
+    tmpScreen.replaceWith("");
+    viewControllerView = $("#vsl_ViewController");
+    viewController = new ViewController();
+    viewController.mp_view = viewControllerView;
+    viewController.viewDidLoad();
+    mpWin.mp_controller = viewController;
 
+    mpNotifications.registerForNotification(function (notif) {
+	    viewController.resetLocale();
+    }, mp_locale_loaded);
 
 //    tmpScreen.replaceWith("");
 }
@@ -81,7 +96,31 @@ function pushProduct(type) {
     itemsController.mp_view = itemsControllerView;
     //call at the beginning
     itemsController.viewDidLoad();
-    mpWin.pushControllerView(itemsController.mp_view, true);
+    mpWin.pushControllerView(itemsController, true);
+}
+
+function pushAbout() {
+    //Get screen width
+    var containerHeight = $(window).height();
+    aboutControllerView.css("min-height", containerHeight+"px");
+    var aboutController = new AboutController();
+    aboutController.mp_view = aboutControllerView;
+    //call at the beginning
+    aboutController.viewDidLoad();
+    mpWin.pushControllerView(aboutController, true);
+}
+
+function pushLanguage() {
+    //Get screen width
+    var containerHeight = $(window).height();
+    chooseLanguageControllerView.css("min-height", containerHeight+"px");
+    var chooseLanguageController = new ChooseLanguageViewController();
+    chooseLanguageController.mp_view = chooseLanguageControllerView;
+    //call at the beginning
+    chooseLanguageController.viewDidLoad();
+    mpWin.pushControllerView(chooseLanguageController, true);
 }
 
 appLaunched();
+
+

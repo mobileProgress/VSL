@@ -93,7 +93,6 @@ function ItemsController(itemsTypeArg) {
     this.mp_view = 0;
 
     this.viewDidLoad = viewDidLoad;
-    this.localized = localized;
     this.numberOfRows = numberOfRows;
     this.cellForRowCol = cellForRowCol;
     this.didSelectRow = didSelectRow;
@@ -113,10 +112,6 @@ function ItemsController(itemsTypeArg) {
 
     this.lastClickRow = 0;
     this.lastClickTime = 0;
-
-    function localized(keyString) {
-	return keyString;
-    }
 
     // function itemsSort(num1, num2, context);
 
@@ -143,10 +138,10 @@ function ItemsController(itemsTypeArg) {
 
 	// Do any additional setup after loading the view.
     
-	title.text(this.localized("items_list_title"));
+	title.text(localized("items_list_title"));
 	
 	// self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"clear") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
-	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (this.localized("clear")) + "</a>");
+	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("clear")) + "</a>");
 	
 	this.vegetables = new Array();
 	this.base_food = new Array();
@@ -164,33 +159,33 @@ function ItemsController(itemsTypeArg) {
         case kESGetList:
             this.loadGetList();
             //self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"check_all") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
-	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (this.localized("check_all")) + "</a>");
+	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("check_all")) + "</a>");
 	    
-            title.text(this.localized("shopping_list"));
+            title.text(localized("shopping_list"));
             break;
         case kESVegetables:
             this.listArray  = this.vegetables;
-            title.text(this.localized("vegetables_title"));
+            title.text(localized("vegetables_title"));
             break;
         case kESBaseFood:
             this.listArray = this.base_food;
-            title.text(this.localized("base_food_title"));
+            title.text(localized("base_food_title"));
             break;
         case kESFruits:
             this.listArray = this.fruits;
-            title.text(this.localized("fruits_title"));
+            title.text(localized("fruits_title"));
             break;
         case kESSpices:
             this.listArray = this.spices;
-            title.text(this.localized("spices_title"));
+            title.text(localized("spices_title"));
             break;
         case kESDrinks:
             this.listArray = this.drinks;
-            title.text(this.localized("drinks_title"));
+            title.text(localized("drinks_title"));
             break;
         case kESCategories:
             this.listArray = this.categories;
-            title.text(this.localized("categories_title"));
+            title.text(localized("categories_title"));
             break;
         default:
             break;
@@ -225,7 +220,7 @@ function ItemsController(itemsTypeArg) {
 	var cell = "<li class=\"mp_list_item vls_base_product\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
 	if(row == this.listArray.length)
 	{
-            cell += this.localized("add_item");
+            cell += localized("add_item");
             // cell.contentView.backgroundColor = [UIColor colorWithRed:1.0f green:0.95f blue:0.80f alpha:1.0f];
             // cell.textLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.95f blue:0.80f alpha:1.0f];
             // [cell setAccessoryView:nil];
@@ -244,8 +239,8 @@ function ItemsController(itemsTypeArg) {
 	}
 
 	var localName = this.listArray[row].name;
-	if(this.localized(localName))
-            localName = this.localized(localName);
+	if(localized(localName))
+            localName = localized(localName);
 	cell += localName;
 	// cell.textLabel.textAlignment = UITextAlignmentLeft;
 	// cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -288,7 +283,7 @@ function ItemsController(itemsTypeArg) {
             // MProAlertView *view = [[MProAlertView alloc] initWithTitle:localized(@"add_item") message:[NSString stringWithFormat:@"%@ \n\n\n", localized(@"enter_item_name")] delegate:self cancelButtonTitle:localized(@"cancel") otherButtonTitles:localized(@"enter"), nil];
             
             // [view show];
-	    var item_name = prompt(this.localized("add_item") + this.localized("enter_item_name"));
+	    var item_name = prompt(localized("add_item") + localized("enter_item_name"));
 	    if(item_name)
 	    {
 		this.alertViewButtonAtIndex(item_name, 1)
@@ -515,7 +510,7 @@ function ItemsController(itemsTypeArg) {
                 {
 
 
-		    var result = confirm(this.localized("delete_question"));
+		    var result = confirm(localized("delete_question"));
 		    if(!result) {
 			return;
 		    }

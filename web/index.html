@@ -14,19 +14,53 @@
 <body>
 
 
+  <div class="mp_screen" id="vsl_language">
+    <div class="mp_title_bar">
+      <div class="mp_bar_back_button">
+    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
+      </div>
+      <div class="mp_bar_title">Choose Language</div>
+    </div>
+    <ul class="mp_list">
+    </ul>
+  </div>
+  <div class="mp_screen" id="vsl_aboutus">
+    <div class="mp_title_bar">
+      <div class="mp_bar_back_button">
+    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
+      </div>
+      <div class="mp_bar_title">About us</div>
+    </div>
+    <div class="mp_about_logo">
+      <img src="images/logo.png" alt="logo" id="about_logo" />
+      <p id="about_desc">Professional developers making progress in the world of mobile apps.</p>
+    </div>
+    <div class="vsl_about_footer">
+      <div class="mp_about_buttons">
+	<a href="http://www.mobileprogressive.com" id="about_link">About Us</a>
+      </div>
+      <div class="mp_about_buttons">
+	<a href="mailto://contactus@mobileprogressive.com" id="contact_link">Contact Us</a>
+      </div>
+      <div class="mp_about_buttons">
+	<a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fmobileprogressive.com&text=Visual+Shopping+List+for+the+web+&via=MobileProgres" id="share_link">Share this app</a>
+      </div>
+    </div>
+  </div>
   <div class="mp_screen" id="vsl_products">
     <div class="mp_title_bar">
       <div class="mp_bar_back_button">
-    	<a href="#" onClick="mpWin.popControllerView(false);">Back</a>
+    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
       </div>
       <div class="mp_bar_button">
     	<a href="#">Select All</a>
       </div>
       <div class="mp_bar_title">Products</div>
     </div>
-    <ul class="mp_list" id="vsl_products">
+    <ul class="mp_list">
     </ul>
   </div>
+
   <div class="mp_window">
     <div class="mp_screen" id="vsl_ViewController">
       <div class="vsl_category_row">
@@ -72,18 +106,27 @@
 	</div>
 	</a>
       </div>
-      <!-- <div class="vsl_main_footer">
+      <div class="vsl_main_footer">
+	<a href="#" onClick="pushLanguage()">
 	<div id="language_btn">
 	  <h2>Change language </br> for this app</h2>
 	</div>
+	</a>
+	<a href="#" onClick="pushAbout();">
 	<div id="btn_about_us">
 	</div>
-      </div> -->
+	</a>
+      </div>
     </div>
   </div>
   <script src="js/persist.js"></script>
+  <script src="js/mp_notifications.js"></script>
+  <script src="js/mp_locale.js"></script>
   <script src="js/mp_ui.js"></script>
   <script src="js/itemsjson.js"></script>
   <script src="js/ItemsController.js"></script>
+  <script src="js/AboutController.js"></script>
+  <script src="js/ChooseLanguageViewController.js"></script>
+  <script src="js/ViewController.js"></script>
   <script src="js/vsl.js"></script>
 </body>

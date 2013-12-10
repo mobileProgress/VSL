@@ -48,6 +48,14 @@ div#vsl_ViewController {
     transition: left 0.3s ease-in;
 }
 
+div#vsl_language {
+    clear:both;
+    margin-top: 0px;
+    background: white;
+    left: 0px;
+    transition: left 0.3s ease-in;
+}
+
 .vsl_category_left {
     float: left;
     width: 103px;
@@ -64,25 +72,15 @@ div#vsl_ViewController {
 
 .vsl_category_row {
     clear: both;
-    width: 300px;
+    width: 290px;
     height: 94px;
     margin: 0 auto;
-    padding-top: 5px;
+    padding-top: 2px;
     
 }
 
 .vsl_category_row h2 { 
     font-size: 16px;
-}
-
-.vsl_main_footer {
-    width: 300px;
-    margin: 0 auto;
-}
-
-.vsl_main_footer h2 { 
-    font-size: 15px;
-    padding-left:10px;
 }
 
 #btn_basefood {
@@ -93,7 +91,8 @@ div#vsl_ViewController {
 }
 
 #btn_basefood h2 {
-    margin-left: 18px;
+    text-align: center;
+    /* margin-left: 18px; */
 }
 
 #btn_vegetables {
@@ -104,7 +103,8 @@ div#vsl_ViewController {
 }
 
 #btn_vegetables h2 {
-    margin-left: 17px;
+    text-align: center;
+    /* margin-left: 17px; */
 }
 
 #btn_fruits {
@@ -115,7 +115,8 @@ div#vsl_ViewController {
 }
 
 #btn_fruits h2 {
-    margin-left: 38px;
+    text-align: center;
+    /* margin-left: 38px; */
 }
 
 #btn_spices {
@@ -126,7 +127,8 @@ div#vsl_ViewController {
 }
 
 #btn_spices h2 {
-    margin-left: 34px;
+    text-align: center;
+    /* margin-left: 34px; */
 }
 
 #btn_drinks {
@@ -137,7 +139,8 @@ div#vsl_ViewController {
 }
 
 #btn_drinks h2 {
-    margin-left: 35px;
+    text-align: center;
+    /* margin-left: 35px; */
 }
 
 #btn_categories {
@@ -148,7 +151,8 @@ div#vsl_ViewController {
 }
 
 #btn_categories h2 {
-    margin-left: 18px;
+    text-align: center;
+    /* margin-left: 18px; */
 }
 
 #btn_getlist {
@@ -160,5 +164,76 @@ div#vsl_ViewController {
 }
 
 #btn_getlist h2 {
-    margin-left: 22px;
+    text-align: center;
+/*     margin-left: 22px; */
+}
+
+/* footer elements */
+.vsl_main_footer {
+    padding: 0px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.vsl_main_footer h2 { 
+    font-size: 15px;
+    padding-left:10px;
+}
+
+#language_btn {
+    padding-top: 40px;
+    float:left;
+    width: 150px;
+}
+
+#btn_about_us {
+    float:right;
+    width: 120px;
+    height: 94px;
+    background-image: url("/vsl/images/about.png");
+}
+
+#btn_about_us h2 {
+    padding-top: 60px;
+    text-align: center;
+}
+/* about */
+
+div#vsl_aboutus {
+    background: white;
+    left: 0px;
+    transition: left 0.3s ease-in;
+}
+
+#about_logo {
+    width: 252px;
+    height: 166px;
+    margin: 0 auto;
+    display: block;
+}
+
+.mp_about_logo p {
+    margin: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.mp_about_buttons {
+    text-align: center;
+    background: white;
+    border: 2px solid black;
+    border-radius: 12px;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 200px;
+    padding: 4px;
+}
+
+.mp_about_buttons a {
+    text-decoration: none;
+
+}
+
+.vsl_about_footer {
+    margin-top: 20px;
 }

@@ -41,74 +41,62 @@
     version without the exceptions above;
 */
 
-var expDays = 60;
 
-function toHex(str) {
-    var hex = '';
-    for(var i=0;i<str.length;i++) {
-        hex += ''+str.charCodeAt(i).toString(16);
-    }
-    return hex;
-}
+var localeObj = ""; //global locale object
 
-function fromHex(hex) {
-    var str = '';
-    for(var i=0;i<hex.length;i=i+2) {
-        str += String.fromCharCode(Number("0x" + hex.substring(i, i + 2)));
+//constants
+mp_locale_loaded = "locale_loaded";
+
+/*
+ * "initLocale" retreives the localization json file accoring to the browser 
+ * language and sets the mp_lang session only cookie
+ */
+function initLocale()
+{
+    var lang = readCookie("userLang");;
+    if(!lang || !lang.length)
+	lang = navigator.language;
+    if(!lang)
+	lang = navigator.browserLanguage; //ie
+    if(!lang)
+	lang = navigator.systemLanguage; //ie
+    if(!lang)
+	lang = navigator.userLanguage;
+
+    if(lang.length > 2)
+	lang = lang.substring(0, 2);
+
+    if(!lang)
+    {
+	lang = "en" //fall back to en locale
     }
-    return str;
+
+    loadLocale(lang);
 }
 
 /*
- * "createCookie" creates cookie with name "name", value "value" and expiration
- * period "days" days. If "days" equals 0 than expDays constant is used for 
- * the exporation period. If days equals -1 than the cookie is created as 
- * session only without beeing stored.
+ * "loadLocale" retreives the localization json file accoring to the "lang" 
+ * argument and sets the mp_lang session only cookie
  */
-function createCookie(name,value,days) {
-    if(days == 0)
-	days = expDays;
-    if(days == -1)
-	days = 0;
-    value = toHex(value);
-    if (days) {
-	var date = new Date();
-	date.setTime(date.getTime()+(days*24*60*60*1000));
-	var expires = "; expires="+ new Date(date).toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name+"="+value+expires + "; path=/";
+function loadLocale(lang)
+{
+    $.ajax('/vsl/js/' + lang + '_string.json').done(function (data){
+	localeObj = data;
+	mpNotifications.sendNotification(mp_locale_loaded);
+    });
 }
 
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-	var c = ca[i];
-	while (c.charAt(0)==' ') c = c.substring(1,c.length);
-	if (c.indexOf(nameEQ) == 0) {
-	    var result = c.substring(nameEQ.length,c.length);
-	    result = fromHex(result);
-	    return result;
-	}
+/*
+ * localized(keyString)
+ * get localized string for key
+ * the return value is string according to the browser language
+ */
+function localized(key)
+{
+    var retStr = localeObj[key];
+    if(retStr)
+    {
+	return retStr;
     }
-    return null;
-}
-
-function eraseCookie(name) {
-    createCookie(name,"",-1);
-}
-
-function enableCookie() {
-    var cookieEnabled=(navigator.cookieEnabled)? true : false
-
-//if not IE4+ nor NS6+
-    if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
-document.cookie="testcookie"
-	cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false
-    }
-
-//if (cookieEnabled) //if cookies are enabled on client's browser
-//do whatever
-
+    return key; //fall back to the keyp
 }

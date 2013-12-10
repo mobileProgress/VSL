@@ -44,6 +44,9 @@
 
 function init_mp_ui() {
     enableCookie();
+    if(initLocale) {
+	initLocale();
+    }
 }
 
 /*
@@ -55,7 +58,7 @@ function reloadData(list) {
     if(!(list.delegate)) {
 	return;
     }
-    if((list.delegate.numberOfRows != null && list.delegate.cellForRowCol != null)) {
+    if((list.delegate.numberOfRows != null) && (list.delegate.cellForRowCol != null)) {
 	numItems = list.delegate.numberOfRows(list);
 	for(var i = 0; i < numItems; ++i) {
 	    // no headers are supported for now
@@ -87,24 +90,6 @@ function mpAnimate(element, cssKey, cssPixelValue, func) {
     }, 18);
 }
 
-// function mpAnimate(element, cssKey, cssPixelValue, func) {
-//     var oldVal = $(element).css(cssKey);
-//     var pxIndex = oldVal.indexOf("px");
-//     oldVal = Number(oldVal.substring(0, pxIndex));
-//     var i = 0;
-//     var step = (cssPixelValue - oldVal) / 30.0;
-//     var myTimer = setInterval(function (){
-// 	$(element).css(cssKey, (oldVal + i*step) + "px");
-// 	++i;
-// 	if(i > 30) {
-// 	    clearInterval(myTimer);
-// 	    if(func){
-// 		func(element);
-// 	    }
-// 	}
-//     }, 18);
-// }
-
 function mpAnimateExt(element, cssKey, cssValue, cssValueExt, func) {
     var oldVal = $(element).css(cssKey);
     var pxIndex = oldVal.indexOf(cssValueExt);
@@ -126,8 +111,8 @@ function mpAnimateExt(element, cssKey, cssValue, cssValueExt, func) {
 /*
  * MPWindow object (also responsible for page navigation)
  */
-function MPWindow(element) {
-    this.mp_view = element;
+function MPWindow(controller) {
+    this.mp_controller = controller;
 
     this.mp_view_navigation_stack = new Array();
     this.pushControllerView = pushControllerView;
@@ -135,55 +120,51 @@ function MPWindow(element) {
     this.didFinishedPopping = didFinishedPopping;
 
     //animated not implemented yet
-    function pushControllerView(controller_view, animated) {
+    function pushControllerView(ctl, animated) {
 	var containerWidth = $(window).width();
-	this.mp_view_navigation_stack[this.mp_view_navigation_stack.length] = this.mp_view.clone(); //contents
-	controller_view.css('left', containerWidth + 'px');
-	
-	this.mp_view.after(controller_view);
+	//save old controller
+	this.mp_view_navigation_stack.push(this.mp_controller);
+
+	//insert the new controller's view
+	ctl.mp_view.css('left', containerWidth + 'px');
+	$(".mp_window .mp_screen").last().after(ctl.mp_view);
+
 	setTimeout(function () {
-	    controller_view[0].style.left = '0px';
+	    ctl.mp_view[0].style.left = '0px';
 	    setTimeout(function () {
 		$(".mp_window .mp_screen").first().replaceWith("");
 	    }, 300);
 	}, 100);
 
-	// controller_view.animate({left: "-="+containerWidth+'px'}, 300, function () {
-	//      $(".mp_window .mp_screen").first().replaceWith("");
-	// });
-	// mpAnimate(controller_view, "left", "0", function () {
-	//     $(".mp_window .mp_screen").first().replaceWith("");
-	// });
-	this.mp_view = $(".mp_window .mp_screen").last();
+	this.mp_contoller = ctl;
 
-
-	// this.mp_view.replaceWith(controller_view); //contents
-	// this.mp_view = $(".mp_window .mp_screen");
-	// this.mp_view.animate({left: "-=100%"}, 500);
+	if(ctl.viewAppeared)
+	{
+	    ctl.viewAppeared();
+	}
     }
 
     //animated not implemented yet
     function popControllerView(animated) {
 	var containerWidth = $(window).width();
 	if(this.mp_view_navigation_stack.length > 0) {
-	    var local_next_view = this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1];
-	    this.mp_view.before(local_next_view);
+	    var next_controller = this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1];
+	    this.mp_view_navigation_stack.pop();
+	    $(".mp_window .mp_screen").last().before(next_controller.mp_view);
+
 	    setTimeout(function () {
 		$(".mp_window .mp_screen").last()[0].style.left = containerWidth + 'px';
 		setTimeout(function () {
 		    $(".mp_window .mp_screen").last().replaceWith("");
 		}, 300);
 	    }, 100);
-	    // this.mp_view.animate({left: "+="+containerWidth+'px'}, 300, function () {
-	    // 	$(this).replaceWith("");
-	    // });
-	    // mpAnimate(this.mp_view, "left", containerWidth, function () {
-	    // 	$(".mp_window .mp_screen").last().replaceWith("");
-	    // });
-	    this.mp_view_navigation_stack.pop();
-	    this.mp_view = $(".mp_window .mp_screen").first();
+	    this.mp_controller = next_controller;
+	    if(next_controller.viewAppeared)
+	    {
+		next_controller.viewAppeared();
+	    }
+
 	}
-//	this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1] = undefined; // undefined
     }
 
     function didFinishedPopping() {
@@ -192,19 +173,5 @@ function MPWindow(element) {
     }
 
 }
-
-/*
- * MPController object
- */
-// function MPController(element) {
-//     this.mp_view = element;
-
-//     function getMPView() {
-// 	if(mp_view) {
-// 	    return mp_view;
-// 	}
-//     }
-// }
-
 
 init_mp_ui();

@@ -44,100 +44,94 @@
 
 function ViewController() {
 
-    var getListButton;
-    var baseFoodButton;
-    var vegetablesButton;
-    var spicesButton;
-    var fruitsButton;
-    var drinksButton;
-    var categoriesButton;
-    var aboutButton;
+    this.mp_view = 0;
+    this.changeLanguage = 0;
+    this.getListLabel = 0;
+    this.baseFoodLabel = 0;
+    this.vegetablesLabel = 0;
+    this.spicesLabel = 0;
+    this.fruitsLabel = 0;
+    this.drinksLabel = 0;
+    this.categoriesLabel = 0;
+    this.aboutLabel = 0;
 
-    var changeLanguage;
-    var getListLabel;
-    var baseFoodLabel;
-    var vegetablesLabel;;
-    var spicesLabel;
-    var fruitsLabel;
-    var drinksLabel;
-    var categoriesLabel;
-    var aboutLabel;
+    // function getListAction();
+    // function baseFoodAction();
+    // function vegetablesAction();
+    // function spicesAction();
+    // function fruitsAction();
+    // function drinksAction();
+    // function categoriesAction();
+    // function aboutAction();
+    // function chooseLanguage();
 
-    function getListAction();
-    function baseFoodAction();
-    function vegetablesAction();
-    function spicesAction();
-    function fruitsAction();
-    function drinksAction();
-    function categoriesAction();
-    function aboutAction();
-    function chooseLanguage();
+    this.resetLocale = resetLocale;
+    this.viewDidLoad = viewDidLoad;
+    this.viewAppeared = viewAppeared;
 
-
-
-    function resetLocale();
+    function resetLocale()
     {
-	if(changeLanguage)
+	if(this.changeLanguage)
 	{
             var string = localized("change_language_title");
             if(string.length)
-		changeLanguage.text(string);
+		this.changeLanguage.html("<h2>"+string+"</h2>");
 	}
 	
-	if(getListLabel)
+	if(this.getListLabel)
 	{
             var string = localized("get_list_title");
             if(string.length)
-		getListLabel.text(string);
+		this.getListLabel.html("<h2>"+string+"</h2>");
 	}
 	
-	if(baseFoodLabel)
+	if(this.baseFoodLabel)
 	{
             var string = localized("base_food_title");
             if(string.length)
-		baseFoodLabel.text(string);
+		this.baseFoodLabel.html("<h2>"+string+"</h2>");
 	}
 	
-	if(vegetablesLabel)
+	if(this.vegetablesLabel)
 	{
             var string = localized("vegetables_title");
             if(string.length)
-		vegetablesLabel.text(string);
+		this.vegetablesLabel.html("<h2>"+string+"</h2>");
 	}
 	
-	if(spicesLabel)
+	if(this.spicesLabel)
 	{
             var string = localized("spices_title");
             if(string.length)
-		spicesLabel.text(string);
+		this.spicesLabel.html("<h2>" + string + "</h2>");
 	}
 	
-	if(fruitsLabel)
+	if(this.fruitsLabel)
 	{
             var string = localized("fruits_title");
             if(string.length)
-		fruitsLabel.text(string);
+		this.fruitsLabel.html("<h2>" + string + "</h2>");
 	}
 	
-	if(drinksLabel)
+	if(this.drinksLabel)
 	{
             var string = localized("drinks_title");
             if(string.length)
-		drinksLabel.text(string);
+		this.drinksLabel.html("<h2>" + string + "</h2>");
 	}
 	
-	if(categoriesLabel)
+	if(this.categoriesLabel)
 	{
             var string = localized("categories_title");
             if(string.length)
-		categoriesLabel.text(string);
+		this.categoriesLabel.html("<h2>" + string + "</h2>");
 	}
 	
-	if(aboutLabel)
+	if(this.aboutLabel)
 	{
             var string = localized("about_title");
             if(string.length)
-		aboutLabel.text(string);
+		this.aboutLabel.html("<h2>" + string + "</h2>");
 	}
 	
     }
@@ -145,15 +139,22 @@ function ViewController() {
     function viewDidLoad()
     {
 
-	self.resetLocale();
+	this.changeLanguage = $("#language_btn", this.mp_view);
+	this.getListLabel = $("#btn_getlist", this.mp_view);
+	this.baseFoodLabel = $("#btn_basefood", this.mp_view);
+	this.vegetablesLabel = $("#btn_vegetables", this.mp_view);
+	this.spicesLabel = $("#btn_spices", this.mp_view);
+	this.fruitsLabel = $("#btn_fruits", this.mp_view);
+	this.drinksLabel = $("#btn_drinks", this.mp_view);
+	this.categoriesLabel = $("#btn_categries", this.mp_view);
+	this.aboutLabel = $("#btn_about_us", this.mp_view);
+
     }
 
-    // function viewWillAppear(animated)
-    // {
-    // 	[super viewWillAppear:animated];
-    // 	[[self navigationController] setNavigationBarHidden:YES animated:animated];
-    // 	[self resetLocale];
-    // }
+    function viewAppeared()
+    {
+    	this.resetLocale();
+    }
     
     // function dealloc()
     // {
@@ -186,59 +187,59 @@ function ViewController() {
 
 //#pragma mark actions
 
-    function  getListAction()
-    {
-	var ctl = ItemsController(kESGetList);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  getListAction()
+    // {
+    // 	var ctl = ItemsController(kESGetList);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  baseFoodAction()
-    {
-	var ctl = ItemsController(kESBaseFood);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  baseFoodAction()
+    // {
+    // 	var ctl = ItemsController(kESBaseFood);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  vegetablesAction()
-    {
-	var ctl = ItemsController(kESVegetables);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  vegetablesAction()
+    // {
+    // 	var ctl = ItemsController(kESVegetables);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  spicesAction()
-    {
-	var ctl = ItemsController(kESSpices);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  spicesAction()
+    // {
+    // 	var ctl = ItemsController(kESSpices);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  fruitsAction()
-    {
-	var ctl = ItemsController(kESFruits);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  fruitsAction()
+    // {
+    // 	var ctl = ItemsController(kESFruits);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  drinksAction()
-    {
-	var ctl = ItemsController(kESDrinks);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  drinksAction()
+    // {
+    // 	var ctl = ItemsController(kESDrinks);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  categoriesAction()
-    {
-	var ctl = ItemsController(kESCategories);
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  categoriesAction()
+    // {
+    // 	var ctl = ItemsController(kESCategories);
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  aboutAction()
-    {
-	var ctl = AboutController();
-	[self.navigationController pushViewController:ctl animated:YES];
-    }
+    // function  aboutAction()
+    // {
+    // 	var ctl = AboutController();
+    // 	[self.navigationController pushViewController:ctl animated:YES];
+    // }
 
-    function  chooseLanguage()
-    {
-	var chooseLanguage = ChooseLanguageViewController();
-	[self.navigationController pushViewController:chooseLanguage animated:YES];
-    }
+    // function  chooseLanguage()
+    // {
+    // 	var chooseLanguage = ChooseLanguageViewController();
+    // 	[self.navigationController pushViewController:chooseLanguage animated:YES];
+    // }
 
 
 
