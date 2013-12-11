@@ -45,8 +45,21 @@ var expDays = 60;
 
 function toHex(str) {
     var hex = '';
+    var h1 = 0, h2 = 0;
+    var hexnum = 0;
     for(var i=0;i<str.length;i++) {
-        hex += ''+str.charCodeAt(i).toString(16);
+	var num = str.charCodeAt(i);
+	if(num > 127) {
+	    h1 = num & 0x7C0;
+	    h1 = h1 >> 6;
+	    h1 = h1 | 0xC0;
+	    h2 = num & 0x3F;
+	    h2 = h2 | 0x80;
+	    hexnum = (h1.toString(16)) + (h2.toString(16));
+	}else {
+	    hexnum = num.toString(16);
+	}
+        hex += hexnum;
     }
     return hex;
 }
@@ -54,7 +67,17 @@ function toHex(str) {
 function fromHex(hex) {
     var str = '';
     for(var i=0;i<hex.length;i=i+2) {
-        str += String.fromCharCode(Number("0x" + hex.substring(i, i + 2)));
+	var num = Number("0x" + hex.substring(i, i + 2));
+	if(num > 127)
+	{
+	    num = Number("0x" + hex.substring(i, i + 4));
+	    i=i+2;
+	    var n1 = num & 0x3F;
+	    var n2 = num & 0x1F00;
+	    n2 = n2 >> 2;
+	    num = n1 | n2;
+	}
+	str += String.fromCharCode(num);
     }
     return str;
 }
@@ -96,7 +119,7 @@ function readCookie(name) {
 }
 
 function eraseCookie(name) {
-    createCookie(name,"",-1);
+    createCookie(name,"",0);
 }
 
 function enableCookie() {

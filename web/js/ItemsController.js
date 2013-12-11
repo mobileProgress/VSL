@@ -250,7 +250,7 @@ function ItemsController(itemsTypeArg) {
 	// [cell.imageView setContentMode:UIViewContentModeScaleAspectFit];
 	// cell.imageView.frame = CGRectMake(0.0f, 0.0f, 55.0f, 55.0f);
 
-	var checked = readCookie((this.listArray[row]).itemIcon);
+	var checked = readCookie(toHex((this.listArray[row]).itemIcon));
 	
 	if(this.itemsType == kESGetList)
             checked = !checked;
@@ -295,8 +295,8 @@ function ItemsController(itemsTypeArg) {
 	cell = listTable.children().eq(row);
 	cellHtml = cell.html();
 	
-	var checked = readCookie(this.listArray[row].itemIcon);
-	createCookie(this.listArray[row].itemIcon,((!checked)?"true":""),0);
+	var checked = readCookie(toHex(this.listArray[row].itemIcon));
+	createCookie(toHex(this.listArray[row].itemIcon),((!checked)?"true":""),0);
 
 	if(this.itemsType == kESGetList)
 	{
@@ -363,7 +363,7 @@ function ItemsController(itemsTypeArg) {
 	createCookie(categoryIconKey, JSON.stringify(array),0);
 
 	
-	createCookie(itemName+"_flag", "true",0);
+	createCookie(toHex(itemName)+"_flag", "true",0);
 	
 	this.loadData();
 	reloadData(listTable);
@@ -450,7 +450,7 @@ function ItemsController(itemsTypeArg) {
     {
 	for(var i = 0; i < array.length; ++i)
 	{
-	    if(readCookie(array[i].itemIcon) && JSON.parse(readCookie(array[i].itemIcon))) {
+	    if(readCookie(toHex(array[i].itemIcon)) && JSON.parse(readCookie(toHex(array[i].itemIcon)))) {
 		this.listArray[this.listArray.length] = array[i];
 	    }
 	}
@@ -461,7 +461,7 @@ function ItemsController(itemsTypeArg) {
 	for(i = 0; i < this.listArray.length; ++i)
 	{
 	    var item = this.listArray[i];
-	    createCookie(item.itemIcon, "", 0);
+	    createCookie(toHex(item.itemIcon), "", 0);
 	}
 	reloadData(listTable);
     }
@@ -506,7 +506,7 @@ function ItemsController(itemsTypeArg) {
         {
             if(array[i] == item.itemIcon)
             {
-		if(readCookie(item.name + "_flag"))
+		if(readCookie(toHex(item.name) + "_flag"))
                 {
 
 
