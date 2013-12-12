@@ -129,12 +129,13 @@ function MPWindow(controller) {
 	ctl.mp_view.css('left', containerWidth + 'px');
 	$(".mp_window .mp_screen").last().after(ctl.mp_view);
 
+	var domView = ctl.mp_view[0];
 	setTimeout(function () {
-	    ctl.mp_view[0].style.left = '0px';
+	    domView.style.left = '0px';
 	    setTimeout(function () {
 		$(".mp_window .mp_screen").first().replaceWith("");
 	    }, 300);
-	}, 100);
+	}, 10);
 
 	this.mp_contoller = ctl;
 
@@ -151,13 +152,14 @@ function MPWindow(controller) {
 	    var next_controller = this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1];
 	    this.mp_view_navigation_stack.pop();
 	    $(".mp_window .mp_screen").last().before(next_controller.mp_view);
+	    var domView = $(".mp_window .mp_screen").last()[0];
 
 	    setTimeout(function () {
-		$(".mp_window .mp_screen").last()[0].style.left = containerWidth + 'px';
+		domView.style.left = containerWidth + 'px';
 		setTimeout(function () {
 		    $(".mp_window .mp_screen").last().replaceWith("");
 		}, 300);
-	    }, 100);
+	    }, 10);
 	    this.mp_controller = next_controller;
 	    if(next_controller.viewAppeared)
 	    {
