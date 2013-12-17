@@ -126,23 +126,22 @@ function MPWindow(controller) {
 	this.mp_view_navigation_stack.push(this.mp_controller);
 
 	//insert the new controller's view
-	ctl.mp_view.css('left', containerWidth + 'px');
+	ctl.mp_view[0].className = ctl.mp_view[0].className + " right_end";
 	$(".mp_window .mp_screen").last().after(ctl.mp_view);
-
-	var domView = ctl.mp_view[0];
-	setTimeout(function () {
-	    domView.style.left = '0px';
-	    setTimeout(function () {
-		$(".mp_window .mp_screen").first().replaceWith("");
-	    }, 300);
-	}, 10);
-
-	this.mp_contoller = ctl;
-
 	if(ctl.viewAppeared)
 	{
 	    ctl.viewAppeared();
 	}
+
+	var domView = ctl.mp_view[0];
+	setTimeout(function () {
+	    domView.className = "mp_screen";
+	    setTimeout(function () {
+		$(".mp_window .mp_screen").first().replaceWith("");
+	    }, 500);
+	}, 10);
+
+	this.mp_contoller = ctl;
     }
 
     //animated not implemented yet
@@ -155,16 +154,18 @@ function MPWindow(controller) {
 	    var domView = $(".mp_window .mp_screen").last()[0];
 
 	    setTimeout(function () {
-		domView.style.left = containerWidth + 'px';
+		//domView.style.left = containerWidth + 'px';
+		domView.className = domView.className + " right_end";
+
 		setTimeout(function () {
 		    $(".mp_window .mp_screen").last().replaceWith("");
-		}, 300);
+		    if(next_controller.viewAppeared)
+		    {
+			next_controller.viewAppeared();
+		    }
+		}, 500);
 	    }, 10);
 	    this.mp_controller = next_controller;
-	    if(next_controller.viewAppeared)
-	    {
-		next_controller.viewAppeared();
-	    }
 
 	}
     }

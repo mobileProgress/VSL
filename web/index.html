@@ -50,10 +50,10 @@
   <div class="mp_screen" id="vsl_products">
     <div class="mp_title_bar">
       <div class="mp_bar_back_button">
-    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
+    	<span onClick="mpWin.popControllerView(true);">Back</span>
       </div>
       <div class="mp_bar_button">
-    	<a href="#">Select All</a>
+    	<span>Select All</span>
       </div>
       <div class="mp_bar_title">Products</div>
     </div>
@@ -64,66 +64,48 @@
   <div class="mp_window">
     <div class="mp_screen" id="vsl_ViewController">
       <div class="vsl_category_row">
-	<a href="#" onClick="pushProduct(0)">
-	<div class="vsl_category" id="btn_getlist">
+	<div class="vsl_category" id="btn_getlist" onClick="pushProduct(0)">
 	  <h2>Get List</h2>
 	</div>
-	</a>
       </div>
       <div class="vsl_category_row">
-	<a href="#" onClick="pushProduct(2)">
-	<div class="vsl_category_left" id="btn_basefood">
+	<div class="vsl_category_left" id="btn_basefood" onClick="pushProduct(2)">
 	  <h2>Base Food</h2>
 	</div>
-	</a>
-	<a href="#" onClick="pushProduct(1)">
-	<div class="vsl_category_right" id="btn_vegetables">
+	<div class="vsl_category_right" id="btn_vegetables" onClick="pushProduct(1)">
 	  <h2>Vegetables</h2>
 	</div>
-	</a>
       </div>
       <div class="vsl_category_row">
-	<a href="#" onClick="pushProduct(3)">
-	<div class="vsl_category_left" id="btn_fruits">
+	<div class="vsl_category_left" id="btn_fruits" onClick="pushProduct(3)">
 	  <h2>Fruits</h2>
 	</div>
-	</a>
-	<a href="#" onClick="pushProduct(4)">
-	<div class="vsl_category_right" id="btn_spices">
+	<div class="vsl_category_right" id="btn_spices" onClick="pushProduct(4)">
 	  <h2>Spices</h2>
 	</div>
-	</a>
       </div>
       <div class="vsl_category_row">
-	<a href="#" onClick="pushProduct(5)">
-	<div class="vsl_category_left" id="btn_drinks">
+	<div class="vsl_category_left" id="btn_drinks" onClick="pushProduct(5)">
 	  <h2>Drinks</h2>
 	</div>
-	</a>
-	<a href="#" onClick="pushProduct(6)">
-	<div class="vsl_category_right" id="btn_categories">
+	<div class="vsl_category_right" id="btn_categories" onClick="pushProduct(6)">
 	  <h2>Categories</h2>
 	</div>
-	</a>
       </div>
       <div class="vsl_main_footer">
-	<a href="#" onClick="pushLanguage()">
-	<div id="language_btn">
+	<div id="language_btn" onClick="pushLanguage()">
 	  <h2>Change language </br> for this app</h2>
 	</div>
-	</a>
-	<a href="#" onClick="pushAbout();">
-	<div id="btn_about_us">
+	<div id="btn_about_us" onClick="pushAbout();">
 	</div>
-	</a>
       </div>
+        <div style="position:absolute; top:0; left:0;" >
+	  <span>v0.5 beta</span>
+	</div>
+	<div style="position:absolute; top:0; right:0;" >
+	  <a href="#" onClick="resetVSLData();">Reset data</a>
+	</div>
     </div>
-  </div>
-  <div style="position:absolute; top:0; left:0;" >
-    <span>v0.5 beta</span>
-  </div>
-  <div style="position:absolute; top:0; right:0;" >
-    <a href="#" onClick="resetVSLData();">Reset data</a>
   </div>
   <script src="js/persist.js"></script>
   <script src="js/mp_notifications.js"></script>

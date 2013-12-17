@@ -34,26 +34,19 @@ body {
 }
 
 div#vsl_products {
-    clear:both;
-    margin-top: 0px;
     left: 0px;
-    transition: left 0.3s ease-in;
     background: white;
 }
 
 div#vsl_ViewController {
     padding-top: 0px;
-    background: white;
     left: 0px;
-    transition: left 0.3s ease-in;
+    background: white;
 }
 
 div#vsl_language {
-    clear:both;
-    margin-top: 0px;
     background: white;
     left: 0px;
-    transition: left 0.3s ease-in;
 }
 
 .vsl_category_left {
@@ -202,7 +195,6 @@ div#vsl_language {
 div#vsl_aboutus {
     background: white;
     left: 0px;
-    transition: left 0.3s ease-in;
 }
 
 #about_logo {

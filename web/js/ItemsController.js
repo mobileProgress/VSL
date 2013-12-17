@@ -132,7 +132,6 @@ function ItemsController(itemsTypeArg) {
     {
 	title = this.mp_view.children(".mp_title_bar").children(".mp_bar_title");
 	listTable = this.mp_view.children(".mp_list");
-//	this.mp_view = $("#vsl_products");
 	listTable.delegate = this;
 	rightButton = this.mp_view.children(".mp_title_bar").children(".mp_bar_button");
 
@@ -140,7 +139,6 @@ function ItemsController(itemsTypeArg) {
     
 	title.text(localized("items_list_title"));
 	
-	// self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"clear") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
 	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("clear")) + "</a>");
 	
 	this.vegetables = new Array();
@@ -150,15 +148,13 @@ function ItemsController(itemsTypeArg) {
 	this.drinks = new Array();
 	this.categories = new Array();
 	
-	//NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	listTable.empty();
 
-    
 	this.loadData();
     
 	switch (this.itemsType) {
         case kESGetList:
             this.loadGetList();
-            //self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:localized(@"check_all") style:UIBarButtonItemStyleBordered target:self action:@selector(clearAllItems)] autorelease];
 	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("check_all")) + "</a>");
 	    
             title.text(localized("shopping_list"));
@@ -190,13 +186,9 @@ function ItemsController(itemsTypeArg) {
         default:
             break;
 	}
-	
-	//listTable.dataSource = self;
-	//listTable.delegate = self;
-	//listTable.rowHeight = 55.0f;
+    
 	reloadData(listTable);
     }
-
 
 // - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 // {
@@ -463,7 +455,10 @@ function ItemsController(itemsTypeArg) {
 	    var item = this.listArray[i];
 	    createCookie(toHex(item.itemIcon), "", 0);
 	}
-	reloadData(listTable);
+	if(listTable)
+	{
+	    reloadData(listTable);
+	}
     }
 
     function deleteItem(item)
