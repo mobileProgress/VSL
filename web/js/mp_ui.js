@@ -50,10 +50,38 @@ function init_mp_ui() {
 }
 
 /*
+ * Returns window's vertical scroll position
+ */
+function mpGetScrollPosition() {
+    var pos = 0;
+    if(document.documentElement) {
+	pos = document.documentElement.scrollTop;
+    }
+    if(!pos || pos == 0) {
+	pos = window.pageYOffset;
+    }
+
+    if(!pos)
+    {
+	return 0;
+    }
+
+    return pos;
+}
+
+/*
+ * Sets window's vertical scroll position
+ */
+function mpSetScrollPosition(topArg) {
+    document.documentElement.scrollTop = topArg;
+}
+
+/*
  * 
  */
 function reloadData(list) {
     var numItems = 0;
+    var scrollPos = mpGetScrollPosition();
     list.empty();
     if(!(list.delegate)) {
 	return;
@@ -65,6 +93,10 @@ function reloadData(list) {
 	    list.append(list.delegate.cellForRowCol(list, i, 0));
 	}
     }
+    mpSetScrollPosition(scrollPos);
+    setTimeout(function () {
+	mpSetScrollPosition(scrollPos);
+    }, 10);
 
 }
 
