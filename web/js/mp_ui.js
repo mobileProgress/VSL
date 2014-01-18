@@ -41,6 +41,9 @@
     version without the exceptions above;
 */
 
+/*
+ * library initialization
+ */
 
 function init_mp_ui() {
     enableCookie();
@@ -80,7 +83,9 @@ function mpSetScrollPosition(topArg) {
 }
 
 /*
- * 
+ * Vertical list of items reload function
+ * Reloads the list by calling it's adapter's 
+ * cellForRowCol and numberOfRows functions 
  */
 function reloadData(list) {
     var numItems = 0;
@@ -105,6 +110,11 @@ function reloadData(list) {
 
 /*
  * mpAnimate method
+ * Animates css properties of element "element"
+ * Only pixel values are supported for this method
+ * "cssKey" is the css key of the animation
+ * "cssPixelValue" is the requested value at the end of the animation
+ * "func" is optional function to execute at the end of the animation
  */
 
 function mpAnimate(element, cssKey, cssPixelValue, func) {
@@ -124,6 +134,12 @@ function mpAnimate(element, cssKey, cssPixelValue, func) {
 	}
     }, 18);
 }
+
+/*
+ * mpAnimateExt
+ * same as mpAnimate method but has argument cssValueExt which
+ * could be "px", "%" or other css value type
+ */
 
 function mpAnimateExt(element, cssKey, cssValue, cssValueExt, func) {
     var oldVal = $(element).css(cssKey);
