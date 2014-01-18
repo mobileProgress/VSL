@@ -73,7 +73,10 @@ function mpGetScrollPosition() {
  * Sets window's vertical scroll position
  */
 function mpSetScrollPosition(topArg) {
-    document.documentElement.scrollTop = topArg;
+    if(document.documentElement)
+        document.documentElement.scrollTop = topArg;
+    if(window.scrollTo)
+        window.scrollTo(0, topArg);
 }
 
 /*
