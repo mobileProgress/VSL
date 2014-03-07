@@ -80,7 +80,7 @@ function initLocale()
  */
 function loadLocale(lang)
 {
-    $.ajax('/vsl/js/' + lang + '_string.json').done(function (data){
+    $.ajax('./js/' + lang + '_string.json').done(function (data){
 	localeObj = data;
 	mpNotifications.sendNotification(mp_locale_loaded);
     });

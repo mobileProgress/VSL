@@ -77,7 +77,7 @@ div#vsl_language {
 }
 
 #btn_basefood {
-    background-image: url("/vsl/images/btn_basefood.png");
+    background-image: url("../images/btn_basefood.png");
     width: 119px;
     height: 40px;
     padding-top: 54px;
@@ -89,7 +89,7 @@ div#vsl_language {
 }
 
 #btn_vegetables {
-    background-image: url("/vsl/images/btn_vegetables.png");
+    background-image: url("../images/btn_vegetables.png");
     width: 119px;
     height: 40px;
     padding-top: 54px;
@@ -101,7 +101,7 @@ div#vsl_language {
 }
 
 #btn_fruits {
-    background-image: url("/vsl/images/btn_fruits.png");
+    background-image: url("../images/btn_fruits.png");
     width: 119px;
     height: 40px;
     padding-top: 54px;
@@ -113,7 +113,7 @@ div#vsl_language {
 }
 
 #btn_spices {
-    background-image: url("/vsl/images/btn_spices.png");
+    background-image: url("../images/btn_spices.png");
     width: 119px;
     height: 40px;
     padding-top: 54px;
@@ -125,7 +125,7 @@ div#vsl_language {
 }
 
 #btn_drinks {
-    background-image: url("/vsl/images/btn_drinks.png");
+    background-image: url("../images/btn_drinks.png");
     width: 119px;
     height: 38px;
     padding-top: 56px;
@@ -137,7 +137,7 @@ div#vsl_language {
 }
 
 #btn_categories {
-    background-image: url("/vsl/images/btn_categories.png");
+    background-image: url("../images/btn_categories.png");
     width: 119px;
     height: 38px;
     padding-top: 56px;
@@ -149,7 +149,7 @@ div#vsl_language {
 }
 
 #btn_getlist {
-    background-image: url("/vsl/images/btn_getlist.png");
+    background-image: url("../images/btn_getlist.png");
     width: 103px;
     height: 40px;
     padding-top: 54px;
@@ -183,7 +183,7 @@ div#vsl_language {
     float:right;
     width: 120px;
     height: 94px;
-    background-image: url("/vsl/images/about.png");
+    background-image: url("../images/about.png");
 }
 
 #btn_about_us h2 {
