@@ -177,7 +177,7 @@ function MPWindow(controller) {
 	this.mp_view_navigation_stack.push(this.mp_controller);
 
 	//insert the new controller's view
-	ctl.mp_view[0].className = ctl.mp_view[0].className + " right_end";
+	ctl.mp_view[0].className = "mp_screen right_end";
 	$(".mp_window .mp_screen").last().after(ctl.mp_view);
 	if(ctl.viewAppeared)
 	{
@@ -206,7 +206,7 @@ function MPWindow(controller) {
 
 	    setTimeout(function () {
 		//domView.style.left = containerWidth + 'px';
-		domView.className = domView.className + " right_end";
+		domView.className = "mp_screen right_end";
 
 		setTimeout(function () {
 		    $(".mp_window .mp_screen").last().replaceWith("");
