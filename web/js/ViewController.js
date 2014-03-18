@@ -207,7 +207,7 @@ function ViewController() {
 	this.spicesLabel = $("#btn_spices", this.mp_view);
 	this.fruitsLabel = $("#btn_fruits", this.mp_view);
 	this.drinksLabel = $("#btn_drinks", this.mp_view);
-	this.categoriesLabel = $("#btn_categries", this.mp_view);
+	this.categoriesLabel = $("#btn_categories", this.mp_view);
 	this.aboutLabel = $("#btn_about_us", this.mp_view);
 
     }
