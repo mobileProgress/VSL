@@ -27,6 +27,7 @@ div {
 
 .mp_hidden {
     visibility: hidden;
+    height: 0px !important;
 }
 
 .right_end {
