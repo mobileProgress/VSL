@@ -90,6 +90,7 @@ function loadLocale(lang)
  * localized(keyString)
  * get localized string for key
  * the return value is string according to the browser language
+ * if the key argument is not found it is returned directly as return value
  */
 function localized(key)
 {

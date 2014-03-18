@@ -137,7 +137,12 @@ function ItemsController(itemsTypeArg) {
 
 	// Do any additional setup after loading the view.
     
-	title.text(localized("items_list_title"));
+        loctxt = localized("items_list_title");
+        if(loctxt == "items_list_title")
+        {
+            loctxt = "Items List";
+        }
+        title.text(loctxt);
 	
 	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("clear")) + "</a>");
 	
@@ -157,31 +162,66 @@ function ItemsController(itemsTypeArg) {
             this.loadGetList();
 	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("check_all")) + "</a>");
 	    
-            title.text(localized("shopping_list"));
+            loctxt = localized("shopping_list");
+            if(loctxt == "shopping_list")
+            {
+        	loctxt = "Shopping List";
+            }
+            title.text(loctxt);
             break;
         case kESVegetables:
             this.listArray  = this.vegetables;
-            title.text(localized("vegetables_title"));
+            loctxt = localized("vegetables_title");
+            if(loctxt == "vegetables_title")
+            {
+        	loctxt = "Vegetables";
+            }
+            title.text(loctxt);
             break;
         case kESBaseFood:
             this.listArray = this.base_food;
-            title.text(localized("base_food_title"));
+            loctxt = localized("base_food_title");
+            if(loctxt == "base_food_title")
+            {
+        	loctxt = "Base Food";
+            }
+            title.text(loctxt);
             break;
         case kESFruits:
             this.listArray = this.fruits;
-            title.text(localized("fruits_title"));
+            loctxt = localized("fruits_title");
+            if(loctxt == "fruits_title")
+            {
+        	loctxt = "Fruits";
+            }
+            title.text(loctxt);
             break;
         case kESSpices:
             this.listArray = this.spices;
-            title.text(localized("spices_title"));
+            loctxt = localized("spices_title");
+            if(loctxt == "spices_title")
+            {
+        	loctxt = "Spices";
+            }
+            title.text(loctxt);
             break;
         case kESDrinks:
             this.listArray = this.drinks;
-            title.text(localized("drinks_title"));
+            loctxt = localized("drinks_title");
+            if(loctxt == "drinks_title")
+            {
+        	loctxt = "Drinks";
+            }
+            title.text(loctxt);
             break;
         case kESCategories:
             this.listArray = this.categories;
-            title.text(localized("categories_title"));
+            loctxt = localized("categories_title");
+            if(loctxt == "categories_title")
+            {
+        	loctxt = "Categories";
+            }
+            title.text(loctxt);
             break;
         default:
             break;

@@ -75,63 +75,124 @@ function ViewController() {
 	{
             var string = localized("change_language_title");
             if(string.length)
+	    {
+		if(string == "change_language_title")
+		{
+		    string = "Change language for this app";
+		}
 		this.changeLanguage.html("<h2>"+string+"</h2>");
+	    }
 	}
 	
 	if(this.getListLabel)
 	{
             var string = localized("get_list_title");
             if(string.length)
+	    {
+		if(string == "get_list_title")
+		{
+		    string = "Get List";
+		}
 		this.getListLabel.html("<h2>"+string+"</h2>");
+	    }
 	}
 	
 	if(this.baseFoodLabel)
 	{
             var string = localized("base_food_title");
             if(string.length)
+	    {
+		if(string == "base_food_title")
+		{
+		    string = "Base Food";
+		}
+
 		this.baseFoodLabel.html("<h2>"+string+"</h2>");
+	    }
 	}
 	
 	if(this.vegetablesLabel)
 	{
             var string = localized("vegetables_title");
             if(string.length)
+	    {
+		if(string == "vegetables_title")
+		{
+		    string = "Vegetables";
+		}
+
 		this.vegetablesLabel.html("<h2>"+string+"</h2>");
+	    }
 	}
 	
 	if(this.spicesLabel)
 	{
             var string = localized("spices_title");
             if(string.length)
+	    {
+		if(string == "spices_title")
+		{
+		    string = "Spices";
+		}
+
 		this.spicesLabel.html("<h2>" + string + "</h2>");
+	    }
 	}
 	
 	if(this.fruitsLabel)
 	{
             var string = localized("fruits_title");
             if(string.length)
+	    {
+		if(string == "fruits_title")
+		{
+		    string = "Fruits";
+		}
+
 		this.fruitsLabel.html("<h2>" + string + "</h2>");
+	    }
 	}
 	
 	if(this.drinksLabel)
 	{
             var string = localized("drinks_title");
             if(string.length)
+	    {
+		if(string == "drinks_title")
+		{
+		    string = "Drinks";
+		}
+
 		this.drinksLabel.html("<h2>" + string + "</h2>");
+	    }
 	}
 	
 	if(this.categoriesLabel)
 	{
             var string = localized("categories_title");
             if(string.length)
+	    {
+		if(string == "categories_title")
+		{
+		    string = "Categories";
+		}
+
 		this.categoriesLabel.html("<h2>" + string + "</h2>");
+	    }
 	}
 	
 	if(this.aboutLabel)
 	{
             var string = localized("about_title");
             if(string.length)
+	    {
+		if(string == "about_title")
+		{
+		    string = "About";
+		}
+
 		this.aboutLabel.html("<h2>" + string + "</h2>");
+	    }
 	}
 	
     }
