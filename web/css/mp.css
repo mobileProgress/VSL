@@ -27,7 +27,6 @@ div {
 
 .mp_hidden {
     visibility: hidden;
-    height: 0px !important;
 }
 
 .right_end {
@@ -72,6 +71,11 @@ div {
     background-image: linear-gradient(#ccc,#111)
     background-image: linear-gradient(to bottom, #ccc 0%, #111 100%);*/
 
+}
+
+.mp_hidden .mp_title_bar {
+    visibility: hidden;
+    height: 0px !important;
 }
 
 .mp_bar_title {
