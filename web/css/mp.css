@@ -73,11 +73,6 @@ div {
 
 }
 
-.mp_hidden .mp_title_bar {
-    visibility: hidden;
-    height: 0px !important;
-}
-
 .mp_bar_title {
     padding-top: 10px;
     text-align: center;

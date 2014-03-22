@@ -68,13 +68,10 @@ function appLaunched() {
     //Get screens
     var tmpScreen = $("#vsl_products");
     itemsControllerView = tmpScreen.clone();
-    tmpScreen.className = tmpScreen.className + "mp_hidden";
     tmpScreen = $("#vsl_aboutus");
     aboutControllerView = tmpScreen.clone();
-    tmpScreen.className = tmpScreen.className + "mp_hidden";
     tmpScreen = $("#vsl_language");
     chooseLanguageControllerView = tmpScreen.clone();
-    tmpScreen.className = tmpScreen.className + "mp_hidden";
     viewControllerView = $("#vsl_ViewController");
     viewController = new ViewController();
     viewController.mp_view = viewControllerView;
