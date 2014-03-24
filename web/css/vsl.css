@@ -17,19 +17,31 @@ body {
 
 .mp_list_item {
     background: white;
+    height: 33px;
+    padding-top: 17px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .mp_list_item img {
-    height: 30px;
-    margin-top: -5px;
+    height: 50px;
+    margin-top: -12px;
     margin-left: -5px;
     margin-right: 2px;
     background: white;
 }
 
 .mp_list_item .vsl_check {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    float:right;
+}
+
+.mp_list_item .vsl_check img {
+    margin-top: -5px;
+    width: 30px;
+    height: 30px;
     float:right;
 }
 
