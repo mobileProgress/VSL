@@ -263,9 +263,10 @@ function ItemsController(itemsTypeArg) {
 	// cell.textLabel.backgroundColor = [UIColor whiteColor];
 
 	var img = this.listArray[row].itemIcon;
-	if(!img)
-	{
-	    cell = cell + "<img src=\"images/Icon.png\" alt=\"\" />";
+	if(!img) {
+	    cell = cell + "<a href=\"#\" onClick=\"alert(\"Test\");\" ><img src=\"images/Icon.png\" alt=\"\" /></a>";
+	}else if(img.substr(0,5).toLowerCase() == "http:") {
+	    cell = cell + "<img src=\"" + img + "\" alt=\"\" />";
 	}else {
 	    cell = cell + "<img src=\"images/" + img + "\" alt=\"\" />";
 	}
@@ -391,7 +392,7 @@ function ItemsController(itemsTypeArg) {
 	array[array.length] = (itemName);
 	createCookie(categoryKey, JSON.stringify(array),0);
 	array = JSON.parse(readCookie(categoryIconKey));
-	array[array.length] = (itemName + ".png");
+	array[array.length] = ("");
 	createCookie(categoryIconKey, JSON.stringify(array),0);
 
 	
