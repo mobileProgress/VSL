@@ -113,6 +113,8 @@ function ItemsController(itemsTypeArg) {
     this.lastClickRow = 0;
     this.lastClickTime = 0;
 
+    this.setCustomIcon = setCustomIcon;
+
     // function itemsSort(num1, num2, context);
 
     // function loadData();
@@ -263,9 +265,14 @@ function ItemsController(itemsTypeArg) {
 	// cell.textLabel.backgroundColor = [UIColor whiteColor];
 
 	var img = this.listArray[row].itemIcon;
-	if(!img) {
-	    cell = cell + "<a href=\"#\" onClick=\"alert(\"Test\");\" ><img src=\"images/Icon.png\" alt=\"\" /></a>";
-	}else if(img.substr(0,5).toLowerCase() == "http:") {
+	if(readCookie(toHex(this.listArray[row].name) + "_flag")) {
+            img = readCookie(toHex(this.listArray[row].name) + "_img");
+            if(!img) {
+	        cell = cell + "<a href=\"#\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "')\" ><img class=\"custom_img\" src=\"images/Icon.png\" alt=\"\" /></a>";
+            }else {
+                cell = cell + "<a href=\"#\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "');\" ><img class=\"custom_img\" src=\"" + img + "\" alt=\"\" /></a>";
+	    }
+	}else if(img.substr(0,4).toLowerCase() == "http") {
 	    cell = cell + "<img src=\"" + img + "\" alt=\"\" />";
 	}else {
 	    cell = cell + "<img src=\"images/" + img + "\" alt=\"\" />";
@@ -316,7 +323,7 @@ function ItemsController(itemsTypeArg) {
             // MProAlertView *view = [[MProAlertView alloc] initWithTitle:localized(@"add_item") message:[NSString stringWithFormat:@"%@ \n\n\n", localized(@"enter_item_name")] delegate:self cancelButtonTitle:localized(@"cancel") otherButtonTitles:localized(@"enter"), nil];
             
             // [view show];
-	    var item_name = prompt(localized("add_item") + localized("enter_item_name"));
+	    var item_name = prompt(localized("enter_item_name"));
 	    if(item_name)
 	    {
 		this.alertViewButtonAtIndex(item_name, 1)
@@ -392,7 +399,7 @@ function ItemsController(itemsTypeArg) {
 	array[array.length] = (itemName);
 	createCookie(categoryKey, JSON.stringify(array),0);
 	array = JSON.parse(readCookie(categoryIconKey));
-	array[array.length] = ("");
+	array[array.length] = (itemName + ".png");
 	createCookie(categoryIconKey, JSON.stringify(array),0);
 
 	
@@ -502,6 +509,14 @@ function ItemsController(itemsTypeArg) {
 	}
     }
 
+    function setCustomIcon(itemName) {
+        var iconURL = prompt("Paste custom item image URL", readCookie(toHex(itemName) + "_img"));
+        if(iconURL)
+	{
+	    createCookie(toHex(itemName) + "_img", iconURL, 0);        
+	}
+    }
+
     function deleteItem(item)
     {
         var categoryKey = "categories";
@@ -556,6 +571,9 @@ function ItemsController(itemsTypeArg) {
 		    array =  JSON.parse(readCookie(categoryKey));
                     array.splice(i, 1);
 		    createCookie(categoryKey, JSON.stringify(array),0);
+
+                    eraseCookie(toHex(item.name) + "_flag");
+                    eraseCookie(toHex(item.name) + "_img");
                     
 		    this.loadData();
                     reloadData(listTable);
