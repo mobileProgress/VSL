@@ -511,10 +511,7 @@ function ItemsController(itemsTypeArg) {
 
     function setCustomIcon(itemName) {
         var iconURL = prompt("Paste custom item image URL", readCookie(toHex(itemName) + "_img"));
-        if(iconURL)
-	{
-	    createCookie(toHex(itemName) + "_img", iconURL, 0);        
-	}
+	createCookie(toHex(itemName) + "_img", iconURL, 0);        
     }
 
     function deleteItem(item)
