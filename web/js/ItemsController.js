@@ -246,21 +246,28 @@ function ItemsController(itemsTypeArg) {
 
     function numberOfRows(listTable)
     {
-	return (this.itemsType == kESGetList)?this.listArray.length:this.listArray.length + 1;
+	return (this.itemsType == kESGetList)?(this.listArray.length):(this.listArray.length + 2);
     }
 
     function cellForRowCol(listTable, row, col)
     {
-	var cell = "<li class=\"mp_list_item vls_base_product\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
+        var cell = "<li class=\"mp_list_item vls_base_product\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
 	if(row == this.listArray.length)
 	{
+            cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
             cell += localized("add_item");
-            // cell.contentView.backgroundColor = [UIColor colorWithRed:1.0f green:0.95f blue:0.80f alpha:1.0f];
-            // cell.textLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.95f blue:0.80f alpha:1.0f];
-            // [cell setAccessoryView:nil];
 	    cell = cell + "</li>";
             return cell;
 	}
+        //The accessory row with print button icon/text size buttons, etc
+        if(row == this.listArray.length + 1)
+        {
+            cell = "<li class=\"mp_list_item vls_base_product vsl_accessory noprint\">";
+            cell += "<form><input type=\"button\" value=\"Print this page\" onclick=\"window.print();return false;\" /></form>";
+	    cell = cell + "</li>";
+            return cell;
+        }
+
 	// cell.contentView.backgroundColor = [UIColor whiteColor];
 	// cell.textLabel.backgroundColor = [UIColor whiteColor];
 

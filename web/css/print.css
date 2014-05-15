@@ -1,0 +1,16 @@
+body {
+  visibility:hidden;
+}
+
+.print {
+  visibility:visible;
+  -webkit-print-color-adjust: exact;
+} 
+
+.noprint {
+  visibility:hidden;
+}
+
+.mp_title_bar {
+  visibility:hidden;
+}
