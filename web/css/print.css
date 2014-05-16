@@ -14,3 +14,14 @@ body {
 .mp_title_bar {
   visibility:hidden;
 }
+
+/* A4 is wide enough for two item columns */
+.left_item {
+  float: left;
+  width: 290px;
+}
+
+.right_item {
+  float: right;
+  width: 290px;
+}

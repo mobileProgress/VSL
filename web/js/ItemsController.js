@@ -246,30 +246,54 @@ function ItemsController(itemsTypeArg) {
 
     function numberOfRows(listTable)
     {
-	return (this.itemsType == kESGetList)?(this.listArray.length):(this.listArray.length + 2);
+	return (this.itemsType == kESGetList)?(this.listArray.length + 1):(this.listArray.length + 2);
     }
 
-    function cellForRowCol(listTable, row, col)
+    function cellAddItem(row)
     {
-        var cell = "<li class=\"mp_list_item vls_base_product\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
-	if(row == this.listArray.length)
-	{
             cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
             cell += localized("add_item");
 	    cell = cell + "</li>";
             return cell;
-	}
-        //The accessory row with print button icon/text size buttons, etc
-        if(row == this.listArray.length + 1)
-        {
+    }
+
+    function cellAccessory(row)
+    {
             cell = "<li class=\"mp_list_item vls_base_product vsl_accessory noprint\">";
-            cell += "<form><input type=\"button\" value=\"Print this page\" onclick=\"window.print();return false;\" /></form>";
+        cell += "<div  class=\"print_button\" onclick=\"window.print();return false;\"><img src=\"images/print_icn.png\" alt=\"Print this page\" /><br /></div>";
 	    cell = cell + "</li>";
             return cell;
+    }
+
+    function cellForRowCol(listTable, row, col)
+    {
+	//calc left or right column for big screen with two item columns
+        //for now it is used for print page only
+	var column = (row % 2)?"right_item":"left_item"; //non even on right
+        if(this.listArray.length < 10)
+	{
+	    column = "";
+	}
+
+        var cell = "<li class=\"mp_list_item vls_base_product " + column + "\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
+	if(row == this.listArray.length)
+	{
+            if(this.itemsType == kESGetList)
+            {
+                return cellAccessory(row);
+            }else
+	    {
+                return cellAddItem(row);
+	    }
         }
 
-	// cell.contentView.backgroundColor = [UIColor whiteColor];
-	// cell.textLabel.backgroundColor = [UIColor whiteColor];
+        //The accessory row with print button icon/text size buttons, etc
+        //We dont check for kESGetList page as length+1 index is not possible
+        //because on get list there is no addItem row
+        if(row == this.listArray.length + 1)
+        {
+	    return cellAccessory(row);
+        }
 
 	var img = this.listArray[row].itemIcon;
 	if(readCookie(toHex(this.listArray[row].name) + "_flag")) {

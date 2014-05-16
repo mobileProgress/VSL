@@ -13,7 +13,8 @@ body {
 
 .mp_list {
     background: white;
-    border-bottom: 0px;
+    border-top: 1px solid #333;
+    border-bottom: none;
 }
 
 .mp_list_item {
@@ -23,6 +24,8 @@ body {
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 16px;
+    border-top: none;
+    border-bottom: 1px solid #333;
 }
 
 .mp_list_item img {
@@ -59,10 +62,7 @@ img.custom_img{
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 16px;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    border-top: 1px solid #333;
+    border: none;
 }
 
 div#vsl_products {
@@ -260,4 +260,28 @@ div#vsl_aboutus {
 
 .vsl_about_footer {
     margin-top: 20px;
+}
+
+/* styled mobile progressive button with border */
+.vslbutton {
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+/* print button */
+.print_button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin-top: -10px;
+    margin-right: 8px;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.print_button img {
+    width:30px;
+    height: 30px;
+    margin: 0px;
 }
