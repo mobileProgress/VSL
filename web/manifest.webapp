@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "name": "Visual Shopping List",
+  "description": "Create your shopping list with few touches and you are ready to shop!",
+  "launch_path": "index.html",
+  "icons": {
+    "128": "/images/Icon.png",
+  },
+  "developer": {
+    "name": "Mobile Progressive Ltd",
+    "url": "http://mobileprogressive.com"
+  },
+  "locales": {
+    "bg": {
+      "description": "Създайте своя пазарски списък само с няколко докосвания и вече ще сте готови за пазар!",
+      "developer": {
+        "url": "http://mobileprogressive.com"
+      }
+    },
+    "ru": {
+      "description": "Create your shopping list with few touches and you are ready to shop!",
+      "developer": {
+        "url": "http://mobileprogressive.com"
+      }
+    },
+  },
+  "default_locale": "en"
+}
