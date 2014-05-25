@@ -159,3 +159,46 @@ div {
 }
 
 
+/* MPPrompt css rules */
+
+.prompt_back {
+    width: 320px;
+    height: 480px;
+    background-color: #333;
+}
+
+.prompt {
+    position: relative;
+}
+
+.prompt_content {
+    position: relative;
+    background: #ccc;
+    border: 1px solid #333;
+}
+
+.prompt_inside {
+    padding-top: 20px;
+    min-height: 80px;
+    width: 100%;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+.prompt_buttons {
+    width: 100%;
+    text-align: center;
+}
+
+.pr_button_right {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.pr_button_left {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-right: 1px solid #333;
+    width: 50%;
+    float: left;
+}
