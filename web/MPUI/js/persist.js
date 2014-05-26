@@ -1,4 +1,4 @@
-/*  Visual Shopping List for the Web
+/*  MPUI
     Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,8 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-    Linking "Visual Shopping List for the Web" statically or dynamically with 
-    other modules is making a combined work based on Visual Shopping List. 
+    Linking "MPUI" statically or dynamically with 
+    other modules is making a combined work based on MPUI. 
     Thus, the terms and conditions of the GNU General Public License cover 
     the whole combination.
 
@@ -25,18 +25,17 @@
     reference shall be deemed a separate work for copyright law purposes. 
 
     In addition, as a special exception, the copyright holders of 
-    "Visual Shopping List for the Web" give you permission to combine 
-    "Visual Shopping List for the Web" with free software programs or 
+    "MPUI" give you permission to combine "MPUI" with free software programs or
     libraries that are released under the GNU LGPL and with code included in 
     the standard release of the "jquery" library under the "jquery" library's 
     license (or modified versions of such code, with unchanged license). You 
     may copy and distribute such a system following the terms of the GNU GPL 
-    for "Visual Shopping List for the Web" and the licenses of the other code 
+    for "MPUI" and the licenses of the other code 
     concerned.
 
-    Note that people who make modified versions of "Visual Shopping List for 
-    the Web" are not obligated to grant these special exceptions for their 
-    modified versions; it is their choice whether to do so. 
+    Note that people who make modified versions of "MPUI" are not 
+    obligated to grant these special exceptions for their modified versions; 
+    it is their choice whether to do so. 
     The GNU General Public License gives permission to release a modified 
     version without the exceptions above;
 */

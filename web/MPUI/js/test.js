@@ -1,5 +1,5 @@
 /*  MPUI
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2014 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -40,63 +40,10 @@
     version without the exceptions above;
 */
 
-
-var localeObj = ""; //global locale object
-
-//constants
-mp_locale_loaded = "locale_loaded";
-
 /*
- * "initLocale" retreives the localization json file accoring to the browser 
- * language and sets the mp_lang session only cookie
+ * Unit tests go here
  */
-function initLocale()
-{
-    var lang = readCookie("userLang");;
-    if(!lang || !lang.length)
-	lang = navigator.language;
-    if(!lang)
-	lang = navigator.browserLanguage; //ie
-    if(!lang)
-	lang = navigator.systemLanguage; //ie
-    if(!lang)
-	lang = navigator.userLanguage;
 
-    if(lang.length > 2)
-	lang = lang.substring(0, 2);
-
-    if(!lang)
-    {
-	lang = "en" //fall back to en locale
-    }
-
-    loadLocale(lang);
-}
-
-/*
- * "loadLocale" retreives the localization json file accoring to the "lang" 
- * argument and sets the mp_lang session only cookie
- */
-function loadLocale(lang)
-{
-    $.ajax('./js/' + lang + '_string.json').done(function (data){
-	localeObj = data;
-	mpNotifications.sendNotification(mp_locale_loaded);
-    });
-}
-
-/*
- * localized(keyString)
- * get localized string for key
- * the return value is string according to the browser language
- * if the key argument is not found it is returned directly as return value
- */
-function localized(key)
-{
-    var retStr = localeObj[key];
-    if(retStr)
-    {
-	return retStr;
-    }
-    return key; //fall back to the keyp
+function test() {
+    
 }
