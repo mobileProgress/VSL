@@ -2,6 +2,20 @@ CACHE MANIFEST
 
 # Serial number 1.1
 
+MPUI
+MPUI/js
+MPUI/js/persist.js
+MPUI/js/mp_locale.js
+MPUI/js/mp_notifications.js
+MPUI/js/mp_ui.js
+MPUI/js/test.js
+MPUI/js/mp_prompt.js
+MPUI/VERSION
+MPUI/LICENSE
+MPUI/css
+MPUI/css/mp.css
+MPUI/GPL
+MPUI/README.md
 GPL.txt
 COPYING.txt
 VERSION
@@ -17,13 +31,8 @@ js/en_string.json
 js/itemsjson.js
 js/jquery-1.7.2.js
 js/jquery-1.7.2.min.js
-js/mp_locale.js
-js/mp_notifications.js
-js/mp_ui.js
-js/persist.js
 js/ru_string.json
 js/vsl.js
-css/mp.css
 css/print.css
 css/vsl.css
 images/about@2x.png
