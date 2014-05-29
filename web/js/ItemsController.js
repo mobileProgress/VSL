@@ -564,7 +564,8 @@ function ItemsController(itemsTypeArg) {
         var mpprompt = new MPPrompt();
 	var oldUrl = readCookie(toHex(itemName) + "_img");
 	if(!oldUrl) oldUrl = ""; //if null value set it to empty string
-        mpprompt.initWithContent("<p>Select image from photo library (experimental)<input type=\"file\" accept=\"image/*\"></p><p>Alternatively paste custom item image URL:<br /><input type=\"text\" value=\"" + oldUrl + "\"></p>");
+
+        mpprompt.initWithContent("<p>Paste custom item image URL:<br /><input type=\"text\" value=\"" + oldUrl + "\"></p>");
 	function PromptDelegate() {
 	    this.buttonTouched = function buttonTouched(number) {
                 if(number == 0) {
@@ -577,26 +578,6 @@ function ItemsController(itemsTypeArg) {
         }
         mpprompt.delegate = new PromptDelegate();
         mpprompt.show();
-        // reloadData(listTable); //fixes scroll position after show
-        var input = document.querySelector('input[type=file]');
-
-        function setImageFromFile(file) {
-            var imgURL = URL.createObjectURL(file);
-            // img = document.createElement('img');
-
-            // img.onload = function() {
-                URL.revokeObjectURL(imgURL);
-            // };
-
-            createCookie(toHex(itemName) + "_img", imgURL, 0);
-	    mpprompt.remove();
-	    reloadData(listTable);
-        }
-        input.onchange = function () {
-            var file = input.files[0];
-
-            setImageFromFile(file);
-        };
 
     }
 
