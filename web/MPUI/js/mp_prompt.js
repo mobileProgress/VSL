@@ -62,9 +62,21 @@ function MPPrompt() {
     this.show = show;
     this.remove = remove;
     this.buttonTouched = buttonTouched;
+    this.prompt_click = prompt_click;
 
     function init() {
         this.initWithContent("");
+    }
+
+    function prompt_click(event) {
+        if(!event)
+            event = window.event;
+
+        if(event.stopPropagation) {
+            event.stopPropagation();
+        } else{ //IE 8
+            e.cancelBubble = true;
+        }
     }
 
     function initWithContent(content) {
@@ -77,7 +89,7 @@ function MPPrompt() {
         //.prompt_content is the layer which contains all prompt sublayers and the prompt borders.
         //.prompt_inside is the layer with prompt text, input, etc. It is on
         //top of the .prompt_buttons layer which holds the buttons.
-        this.mp_view = "<div id=\"prompt_root\" class=\"prompt_back\"><div class=\"prompt\" ><div class=\"prompt_content\"><div class=\"prompt_inside\">"+content+"</div><div class=\"prompt_buttons\" ><div class=\"pr_button_left\"><a href=\"#\" onclick=\"kMPPromptVisible.buttonTouched(0)\" >Ok</a></div><div class=\"pr_button_right\"> <a href=\"#\" onclick=\"kMPPromptVisible.buttonTouched(1)\">Cancel</a></div></div></div></div></div>";
+        this.mp_view = "<div id=\"prompt_root\" class=\"prompt_back\" onclick=\"kMPPromptVisible.prompt_click(event)\"><div class=\"prompt\" ><div class=\"prompt_content\"><div class=\"prompt_inside\">"+content+"</div><div class=\"prompt_buttons\" ><div class=\"pr_button_left\" onclick=\"kMPPromptVisible.buttonTouched(0)\">Ok</div><div class=\"pr_button_right\" onclick=\"kMPPromptVisible.buttonTouched(1)\">Cancel</div></div></div></div></div>";
     }
 
     function show() {
@@ -85,13 +97,15 @@ function MPPrompt() {
             return;
         kMPPromptVisible = this;
 
+	var scrollTop = mpGetScrollPosition() + "px";
+
         $("body").children().last().after(this.mp_view);
 
         //adjust prompt geometry
         $("#prompt_root").height(document.documentElement.scrollHeight + "px");
-        $("#prompt_root").width(window.innerWidth + "px");
+        $("#prompt_root").width(document.documentElement.scrollWidth + "px");
 	var prompt = $(".prompt");
-	prompt[0].style.top = document.documentElement.scrollTop + "px";
+	prompt[0].style.top = scrollTop;
 	prompt.height(window.innerHeight + "px");
 	prompt.width((window.innerWidth*0.8) + "px");
 	prompt[0].style.left = (window.innerWidth*0.1) + "px";

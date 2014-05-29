@@ -251,7 +251,7 @@ function ItemsController(itemsTypeArg) {
 
     function cellAddItem(row)
     {
-            cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
+            cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +", event);\">";
             cell += localized("add_item");
 	    cell = cell + "</li>";
             return cell;
@@ -275,7 +275,7 @@ function ItemsController(itemsTypeArg) {
 	    column = "";
 	}
 
-        var cell = "<li class=\"mp_list_item vls_base_product " + column + "\" onClick=\"listTable.delegate.didSelectRow("+ row +");\">";
+        var cell = "<li class=\"mp_list_item vls_base_product " + column + "\" onClick=\"listTable.delegate.didSelectRow("+ row +", event);\">";
 	if(row == this.listArray.length)
 	{
             if(this.itemsType == kESGetList)
@@ -299,9 +299,10 @@ function ItemsController(itemsTypeArg) {
 	if(readCookie(toHex(this.listArray[row].name) + "_flag")) {
             img = readCookie(toHex(this.listArray[row].name) + "_img");
             if(!img) {
-	        cell = cell + "<a href=\"#\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "')\" ><img class=\"custom_img\" src=\"images/Icon.png\" alt=\"\" /></a>";
+	        cell = cell + "<img class=\"custom_img\" src=\"images/Icon.png\" alt=\"\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "', event)\" />";
             }else {
-                cell = cell + "<a href=\"#\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "');\" ><img class=\"custom_img\" src=\"" + img + "\" alt=\"\" /></a>";
+		URL.revokeObjectURL(img);
+                cell = cell + "<img class=\"custom_img\" src=\"" + img + "\" alt=\"\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "', event);\" />";
 	    }
 	}else if(img.substr(0,4).toLowerCase() == "http") {
 	    cell = cell + "<img src=\"" + img + "\" alt=\"\" />";
@@ -339,7 +340,16 @@ function ItemsController(itemsTypeArg) {
 	return cell;
     }
 
-    function didSelectRow(row) {
+    function didSelectRow(row, event) {
+        if(!event)
+            event = window.event;
+
+        if(event.stopPropagation) {
+            event.stopPropagation();
+        } else{ //IE 8
+            e.cancelBubble = true;
+        }
+
 	this.tableViewDidSelectRow(listTable, row);
     }
 
@@ -540,9 +550,54 @@ function ItemsController(itemsTypeArg) {
 	}
     }
 
-    function setCustomIcon(itemName) {
-        var iconURL = prompt("Paste custom item image URL", readCookie(toHex(itemName) + "_img"));
-	createCookie(toHex(itemName) + "_img", iconURL, 0);        
+    function setCustomIcon(itemName, event) {
+
+        if(!event)
+            event = window.event;
+
+	if(event.stopPropagation) {
+	    event.stopPropagation();
+	} else{ //IE 8
+	    e.cancelBubble = true;
+	}
+
+        var mpprompt = new MPPrompt();
+	var oldUrl = readCookie(toHex(itemName) + "_img");
+	if(!oldUrl) oldUrl = ""; //if null value set it to empty string
+        mpprompt.initWithContent("<p>Select image from photo library (experimental)<input type=\"file\" accept=\"image/*\"></p><p>Alternatively paste custom item image URL:<br /><input type=\"text\" value=\"" + oldUrl + "\"></p>");
+	function PromptDelegate() {
+	    this.buttonTouched = function buttonTouched(number) {
+                if(number == 0) {
+                    var txtInput = document.querySelector('input[type=text]');
+                    var iconURL = txtInput.value;
+                    createCookie(toHex(itemName) + "_img", iconURL, 0);        
+                    reloadData(listTable);
+                }
+            }
+        }
+        mpprompt.delegate = new PromptDelegate();
+        mpprompt.show();
+        // reloadData(listTable); //fixes scroll position after show
+        var input = document.querySelector('input[type=file]');
+
+        function setImageFromFile(file) {
+            var imgURL = URL.createObjectURL(file);
+            // img = document.createElement('img');
+
+            // img.onload = function() {
+                URL.revokeObjectURL(imgURL);
+            // };
+
+            createCookie(toHex(itemName) + "_img", imgURL, 0);
+	    mpprompt.remove();
+	    reloadData(listTable);
+        }
+        input.onchange = function () {
+            var file = input.files[0];
+
+            setImageFromFile(file);
+        };
+
     }
 
     function deleteItem(item)
