@@ -1,6 +1,8 @@
 CACHE MANIFEST
 
-# Serial number 1.1
+# Serial number 1.1.1
+
+CACHE:
 
 MPUI
 MPUI/js
@@ -252,3 +254,4 @@ images/yogurt.png
 
 NETWORK:
 
+*
