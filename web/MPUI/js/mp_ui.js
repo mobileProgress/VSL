@@ -1,5 +1,5 @@
 /*  MPUI
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@
 function init_mp_ui() {
     enableCookie();
     if(initLocale) {
-	initLocale();
+        initLocale();
     }
 }
 
@@ -57,15 +57,15 @@ function init_mp_ui() {
 function mpGetScrollPosition() {
     var pos = 0;
     if(document.documentElement) {
-	pos = document.documentElement.scrollTop;
+        pos = document.documentElement.scrollTop;
     }
     if(!pos || pos == 0) {
-	pos = window.pageYOffset;
+        pos = window.pageYOffset;
     }
 
     if(!pos)
     {
-	return 0;
+        return 0;
     }
 
     return pos;
@@ -91,18 +91,18 @@ function reloadData(list) {
     var scrollPos = mpGetScrollPosition();
     list.empty();
     if(!(list.delegate)) {
-	return;
+        return;
     }
     if((list.delegate.numberOfRows != null) && (list.delegate.cellForRowCol != null)) {
-	numItems = list.delegate.numberOfRows(list);
-	for(var i = 0; i < numItems; ++i) {
-	    // no headers are supported for now
-	    list.append(list.delegate.cellForRowCol(list, i, 0));
-	}
+        numItems = list.delegate.numberOfRows(list);
+        for(var i = 0; i < numItems; ++i) {
+            // no headers are supported for now
+            list.append(list.delegate.cellForRowCol(list, i, 0));
+        }
     }
     mpSetScrollPosition(scrollPos);
     setTimeout(function () {
-	mpSetScrollPosition(scrollPos);
+        mpSetScrollPosition(scrollPos);
     }, 10);
 
 }
@@ -123,14 +123,14 @@ function mpAnimate(element, cssKey, cssPixelValue, func) {
     var i = 0;
     var step = (cssPixelValue - oldVal) / 30.0;
     var myTimer = setInterval(function (){
-	element[0].style.left = parseFloat(element[0].style.left) + step + "px";
-	++i;
-	if(i >= 30) {
-	    clearInterval(myTimer);
-	    if(func){
-		func(element);
-	    }
-	}
+        element[0].style.left = parseFloat(element[0].style.left) + step + "px";
+        ++i;
+        if(i >= 30) {
+            clearInterval(myTimer);
+            if(func){
+                func(element);
+            }
+        }
     }, 18);
 }
 
@@ -147,14 +147,14 @@ function mpAnimateExt(element, cssKey, cssValue, cssValueExt, func) {
     var i = 0;
     var step = (cssValue - oldVal) / 30.0;
     var myTimer = setInterval(function (){
-	$(element).css(cssKey, (oldVal + i*step) + cssValueExt);
-	++i;
-	if(i > 30) {
-	    clearInterval(myTimer);
-	    if(func){
-		func(element);
-	    }
-	}
+        $(element).css(cssKey, (oldVal + i*step) + cssValueExt);
+        ++i;
+        if(i > 30) {
+            clearInterval(myTimer);
+            if(func){
+                func(element);
+            }
+        }
     }, 18);
 }
 
@@ -171,58 +171,58 @@ function MPWindow(controller) {
 
     //animated not implemented yet
     function pushControllerView(ctl, animated) {
-	var containerWidth = $(window).width();
-	//save old controller
-	this.mp_view_navigation_stack.push(this.mp_controller);
+        var containerWidth = $(window).width();
+        //save old controller
+        this.mp_view_navigation_stack.push(this.mp_controller);
 
-	//insert the new controller's view
-	ctl.mp_view[0].className = "mp_screen right_end";
-	$(".mp_window .mp_screen").last().after(ctl.mp_view);
-	if(ctl.viewAppeared)
-	{
-	    ctl.viewAppeared();
-	}
+        //insert the new controller's view
+        ctl.mp_view[0].className = "mp_screen right_end";
+        $(".mp_window .mp_screen").last().after(ctl.mp_view);
+        if(ctl.viewAppeared)
+        {
+            ctl.viewAppeared();
+        }
 
-	var domView = ctl.mp_view[0];
-	setTimeout(function () {
-	    domView.className = "mp_screen";
-	    setTimeout(function () {
-		$(".mp_window .mp_screen").first().replaceWith("");
-	    }, 500);
-	}, 10);
+        var domView = ctl.mp_view[0];
+        setTimeout(function () {
+            domView.className = "mp_screen";
+            setTimeout(function () {
+                $(".mp_window .mp_screen").first().replaceWith("");
+            }, 500);
+        }, 10);
 
-	this.mp_contoller = ctl;
+        this.mp_contoller = ctl;
     }
 
     //animated not implemented yet
     function popControllerView(animated) {
-	var containerWidth = $(window).width();
-	if(this.mp_view_navigation_stack.length > 0) {
-	    var next_controller = this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1];
-	    this.mp_view_navigation_stack.pop();
-	    $(".mp_window .mp_screen").last().before(next_controller.mp_view);
-	    var domView = $(".mp_window .mp_screen").last()[0];
+        var containerWidth = $(window).width();
+        if(this.mp_view_navigation_stack.length > 0) {
+            var next_controller = this.mp_view_navigation_stack[this.mp_view_navigation_stack.length - 1];
+            this.mp_view_navigation_stack.pop();
+            $(".mp_window .mp_screen").last().before(next_controller.mp_view);
+            var domView = $(".mp_window .mp_screen").last()[0];
 
-	    setTimeout(function () {
-		//domView.style.left = containerWidth + 'px';
-		domView.className = "mp_screen right_end";
+            setTimeout(function () {
+                //domView.style.left = containerWidth + 'px';
+                domView.className = "mp_screen right_end";
 
-		setTimeout(function () {
-		    $(".mp_window .mp_screen").last().replaceWith("");
-		    if(next_controller.viewAppeared)
-		    {
-			next_controller.viewAppeared();
-		    }
-		}, 500);
-	    }, 10);
-	    this.mp_controller = next_controller;
+                setTimeout(function () {
+                    $(".mp_window .mp_screen").last().replaceWith("");
+                    if(next_controller.viewAppeared)
+                    {
+                        next_controller.viewAppeared();
+                    }
+                }, 500);
+            }, 10);
+            this.mp_controller = next_controller;
 
-	}
+        }
     }
 
     function didFinishedPopping() {
-	this.mp_view.replaceWith("");
-	this.mp_view = $(".mp_window .mp_screen");
+        this.mp_view.replaceWith("");
+        this.mp_view = $(".mp_window .mp_screen");
     }
 
 }

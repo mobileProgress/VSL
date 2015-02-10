@@ -1,5 +1,5 @@
 /*  Visual Shopping List for the Web
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -114,6 +114,7 @@ function ItemsController(itemsTypeArg) {
     this.lastClickTime = 0;
 
     this.setCustomIcon = setCustomIcon;
+    this.cellAccessory = cellAccessory;
 
     // function itemsSort(num1, num2, context);
 
@@ -132,12 +133,12 @@ function ItemsController(itemsTypeArg) {
 
     function viewDidLoad()
     {
-	title = this.mp_view.children(".mp_title_bar").children(".mp_bar_title");
-	listTable = this.mp_view.children(".mp_list");
-	listTable.delegate = this;
-	rightButton = this.mp_view.children(".mp_title_bar").children(".mp_bar_button");
+        title = this.mp_view.children(".mp_title_bar").children(".mp_bar_title");
+        listTable = this.mp_view.children(".mp_list");
+        listTable.delegate = this;
+        rightButton = this.mp_view.children(".mp_title_bar").children(".mp_bar_button");
 
-	// Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
     
         loctxt = localized("items_list_title");
         if(loctxt == "items_list_title")
@@ -145,29 +146,29 @@ function ItemsController(itemsTypeArg) {
             loctxt = "Items List";
         }
         title.text(loctxt);
-	
-	rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("clear")) + "</a>");
-	
-	this.vegetables = new Array();
-	this.base_food = new Array();
-	this.fruits = new Array();
-	this.spices = new Array();
-	this.drinks = new Array();
-	this.categories = new Array();
-	
-	listTable.empty();
+        
+        rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("clear")) + "</a>");
+        
+        this.vegetables = new Array();
+        this.base_food = new Array();
+        this.fruits = new Array();
+        this.spices = new Array();
+        this.drinks = new Array();
+        this.categories = new Array();
+        
+        listTable.empty();
 
-	this.loadData();
+        this.loadData();
     
-	switch (this.itemsType) {
+        switch (this.itemsType) {
         case kESGetList:
             this.loadGetList();
-	    rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("check_all")) + "</a>");
-	    
+            rightButton.html("<a href=\"#\" onClick=\"listTable.delegate.clearAllItems();\">" + (localized("check_all")) + "</a>");
+            
             loctxt = localized("shopping_list");
             if(loctxt == "shopping_list")
             {
-        	loctxt = "Shopping List";
+                loctxt = "Shopping List";
             }
             title.text(loctxt);
             break;
@@ -176,7 +177,7 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("vegetables_title");
             if(loctxt == "vegetables_title")
             {
-        	loctxt = "Vegetables";
+                loctxt = "Vegetables";
             }
             title.text(loctxt);
             break;
@@ -185,7 +186,7 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("base_food_title");
             if(loctxt == "base_food_title")
             {
-        	loctxt = "Base Food";
+                loctxt = "Base Food";
             }
             title.text(loctxt);
             break;
@@ -194,7 +195,7 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("fruits_title");
             if(loctxt == "fruits_title")
             {
-        	loctxt = "Fruits";
+                loctxt = "Fruits";
             }
             title.text(loctxt);
             break;
@@ -203,7 +204,7 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("spices_title");
             if(loctxt == "spices_title")
             {
-        	loctxt = "Spices";
+                loctxt = "Spices";
             }
             title.text(loctxt);
             break;
@@ -212,7 +213,7 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("drinks_title");
             if(loctxt == "drinks_title")
             {
-        	loctxt = "Drinks";
+                loctxt = "Drinks";
             }
             title.text(loctxt);
             break;
@@ -221,15 +222,15 @@ function ItemsController(itemsTypeArg) {
             loctxt = localized("categories_title");
             if(loctxt == "categories_title")
             {
-        	loctxt = "Categories";
+                loctxt = "Categories";
             }
             title.text(loctxt);
             break;
         default:
             break;
-	}
+        }
     
-	reloadData(listTable);
+        reloadData(listTable);
     }
 
 // - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -246,45 +247,48 @@ function ItemsController(itemsTypeArg) {
 
     function numberOfRows(listTable)
     {
-	return (this.itemsType == kESGetList)?(this.listArray.length + 1):(this.listArray.length + 2);
+        return (this.itemsType == kESGetList)?(this.listArray.length + 1):(this.listArray.length + 2);
     }
 
     function cellAddItem(row)
     {
-            cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +", event);\">";
-            cell += localized("add_item");
-	    cell = cell + "</li>";
-            return cell;
+        cell = "<li class=\"mp_list_item vls_base_product noprint\" onClick=\"listTable.delegate.didSelectRow("+ row +", event);\">";
+        cell += localized("add_item");
+        cell = cell + "</li>";
+        return cell;
     }
 
     function cellAccessory(row)
     {
-            cell = "<li class=\"mp_list_item vls_base_product vsl_accessory noprint\">";
+        cell = "<li class=\"mp_list_item vls_base_product vsl_accessory noprint\">";
+        if(this.itemsType == kESGetList) {
+            cell += "<a href=\"#\" onClick=\"save_url_data()\"><img src=\"images/sync@2x.png\" width=\"60px\" height=\"44px\" class=\"save_button\" /></a>";
+        }
         cell += "<div  class=\"print_button\" onclick=\"window.print();return false;\"><img src=\"images/print_icn.png\" alt=\"Print this page\" /><br /></div>";
-	    cell = cell + "</li>";
-            return cell;
+        cell = cell + "</li>";
+        return cell;
     }
 
     function cellForRowCol(listTable, row, col)
     {
-	//calc left or right column for big screen with two item columns
+        //calc left or right column for big screen with two item columns
         //for now it is used for print page only
-	var column = (row % 2)?"right_item":"left_item"; //non even on right
+        var column = (row % 2)?"right_item":"left_item"; //non even on right
         if(this.listArray.length < 10)
-	{
-	    column = "";
-	}
+        {
+            column = "";
+        }
 
         var cell = "<li class=\"mp_list_item vls_base_product " + column + "\" onClick=\"listTable.delegate.didSelectRow("+ row +", event);\">";
-	if(row == this.listArray.length)
-	{
+        if(row == this.listArray.length)
+        {
             if(this.itemsType == kESGetList)
             {
-                return cellAccessory(row);
+                return this.cellAccessory(row);
             }else
-	    {
+            {
                 return cellAddItem(row);
-	    }
+            }
         }
 
         //The accessory row with print button icon/text size buttons, etc
@@ -292,52 +296,52 @@ function ItemsController(itemsTypeArg) {
         //because on get list there is no addItem row
         if(row == this.listArray.length + 1)
         {
-	    return cellAccessory(row);
+            return this.cellAccessory(row);
         }
 
-	var img = this.listArray[row].itemIcon;
-	if(readCookie(toHex(this.listArray[row].name) + "_flag")) {
+        var img = this.listArray[row].itemIcon;
+        if(readCookie(toHex(this.listArray[row].name) + "_flag")) {
             img = readCookie(toHex(this.listArray[row].name) + "_img");
             if(!img) {
-	        cell = cell + "<img class=\"custom_img\" src=\"images/Icon.png\" alt=\"\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "', event)\" />";
+                cell = cell + "<img class=\"custom_img\" src=\"images/Icon.png\" alt=\"\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "', event)\" />";
             }else {
-		URL.revokeObjectURL(img);
+                URL.revokeObjectURL(img);
                 cell = cell + "<img class=\"custom_img\" src=\"" + img + "\" alt=\"\" onClick=\"listTable.delegate.setCustomIcon('" + this.listArray[row].name + "', event);\" />";
-	    }
-	}else if(img.substr(0,4).toLowerCase() == "http") {
-	    cell = cell + "<img src=\"" + img + "\" alt=\"\" />";
-	}else {
-	    cell = cell + "<img src=\"images/" + img + "\" alt=\"\" />";
-	}
+            }
+        }else if(img.substr(0,4).toLowerCase() == "http") {
+            cell = cell + "<img src=\"" + img + "\" alt=\"\" />";
+        }else {
+            cell = cell + "<img src=\"images/" + img + "\" alt=\"\" />";
+        }
 
-	var localName = this.listArray[row].name;
-	if(localized(localName))
+        var localName = this.listArray[row].name;
+        if(localized(localName))
             localName = localized(localName);
-	cell += localName;
-	// cell.textLabel.textAlignment = UITextAlignmentLeft;
-	// cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-	// cell.textLabel.adjustsFontSizeToFitWidth = YES;
-	// cell.textLabel.minimumFontSize = 5.0f;
-	// cell.textLabel.numberOfLines = 2;
-	// [cell.imageView setContentMode:UIViewContentModeScaleAspectFit];
-	// cell.imageView.frame = CGRectMake(0.0f, 0.0f, 55.0f, 55.0f);
+        cell += localName;
+        // cell.textLabel.textAlignment = UITextAlignmentLeft;
+        // cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        // cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        // cell.textLabel.minimumFontSize = 5.0f;
+        // cell.textLabel.numberOfLines = 2;
+        // [cell.imageView setContentMode:UIViewContentModeScaleAspectFit];
+        // cell.imageView.frame = CGRectMake(0.0f, 0.0f, 55.0f, 55.0f);
 
-	var checked = readCookie(toHex((this.listArray[row]).itemIcon));
-	
-	if(this.itemsType == kESGetList)
+        var checked = readCookie(toHex((this.listArray[row]).itemIcon));
+        
+        if(this.itemsType == kESGetList)
             checked = !checked;
-	
-	if(checked)
-	{
-	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check.png\" alt=\"check_box\" /></a>";
-	}
-	else
-	{
-	    cell += "<a href=\"#\" class=\"vsl_check\"><img src=\"images/check_empty.png\" alt=\"check_box\" /></a>";
-	}
-	
-	cell = cell + "</li>";
-	return cell;
+        
+        if(checked)
+        {
+            cell += "<div class=\"vsl_check\"><img src=\"images/check.png\" alt=\"check_box\" /></div>";
+        }
+        else
+        {
+            cell += "<div class=\"vsl_check\"><img src=\"images/check_empty.png\" alt=\"check_box\" /></div>";
+        }
+        
+        cell = cell + "</li>";
+        return cell;
     }
 
     function didSelectRow(row, event) {
@@ -350,63 +354,78 @@ function ItemsController(itemsTypeArg) {
             e.cancelBubble = true;
         }
 
-	this.tableViewDidSelectRow(listTable, row);
+        this.tableViewDidSelectRow(listTable, row);
     }
 
     function tableViewDidSelectRow(tableView, row)
     {
-	if(this.checkDoubleClickAtRow(row))
-	{
-	    return;
-	}
-	if(row == this.listArray.length)
-	{   
+        if(this.checkDoubleClickAtRow(row))
+        {
+            return;
+        }
+        if(row == this.listArray.length)
+        {   
             // MProAlertView *view = [[MProAlertView alloc] initWithTitle:localized(@"add_item") message:[NSString stringWithFormat:@"%@ \n\n\n", localized(@"enter_item_name")] delegate:self cancelButtonTitle:localized(@"cancel") otherButtonTitles:localized(@"enter"), nil];
             
             // [view show];
-	    var item_name = prompt(localized("enter_item_name"));
-	    if(item_name)
-	    {
-		this.alertViewButtonAtIndex(item_name, 1)
-	    }
+            var item_name = prompt(localized("enter_item_name"));
+            if(item_name)
+            {
+                this.alertViewButtonAtIndex(item_name, 1)
+            }
             
             return;
-	}
-	
-	cell = listTable.children().eq(row);
-	cellHtml = cell.html();
-	
-	var checked = readCookie(toHex(this.listArray[row].itemIcon));
-	createCookie(toHex(this.listArray[row].itemIcon),((!checked)?"true":""),0);
+        }
 
-	if(this.itemsType == kESGetList)
-	{
-	    cellHtml = cellHtml.replace("check.png", "check_empty.png");
-	    cell.replaceWith(cellHtml);
-	}
-	else
-	{
-	    cellHtml = cellHtml.replace("check_empty.png", "check.png");
-	    cell.replaceWith(cellHtml);
-	}
-	
-	reloadData(listTable);
-	
+        var checked = readCookie(toHex(this.listArray[row].itemIcon));
+        createCookie(toHex(this.listArray[row].itemIcon),((!checked)?"true":""),0);
+        
+        var lists = document.getElementsByTagName("ul");
+        if(lists.length > 0) {
+            var theList = lists[lists.length - 1].getElementsByTagName("li");
+            if(row < theList.length) {
+                var tagString = "<img src=\"images/check.png\" alt=\"check_box\">";
+                if(checked) {
+                    tagString = "<img src=\"images/check_empty.png\" alt=\"check_box\">";
+                }
+                theList[row].getElementsByTagName("div")[0].getElementsByTagName("img")[0].outerHTML = tagString;
+            }
+        }
+        
+        /*cell = listTable.children().eq(row);
+        cellHtml = cell.html();
+        
+        var checked = readCookie(toHex(this.listArray[row].itemIcon));
+        createCookie(toHex(this.listArray[row].itemIcon),((!checked)?"true":""),0);
+
+        if(this.itemsType == kESGetList)
+        {
+            cellHtml = cellHtml.replace("check.png", "check_empty.png");
+            cell.replaceWith(cellHtml);
+        }
+        else
+        {
+            cellHtml = cellHtml.replace("check_empty.png", "check.png");
+            cell.replaceWith(cellHtml);
+        }*/
+        
+        //reloadData(listTable);
+        
     }
 
     function alertViewButtonAtIndex(alertViewText, buttonIndex)
     {
-	
-	if(buttonIndex == 0)
-	{
+        
+        if(buttonIndex == 0)
+        {
             return;
-	}
-	
-	var error;
-	var itemName = alertViewText;
-	var categoryKey = "categories";
-	var categoryIconKey = "categories_icons";
-	switch (this.itemsType) {
+        }
+        
+        var error;
+        var itemName = alertViewText;
+        var categoryKey = "categories";
+        var categoryIconKey = "categories_icons";
+        switch (this.itemsType) {
         case kESVegetables:
             categoryKey = "vegetables";
             categoryIconKey = "vegetables_icons";
@@ -434,34 +453,34 @@ function ItemsController(itemsTypeArg) {
             
         default:
             break;
-	}
-	
-	var array = JSON.parse(readCookie(categoryKey));
-	array[array.length] = (itemName);
-	createCookie(categoryKey, JSON.stringify(array),0);
-	array = JSON.parse(readCookie(categoryIconKey));
-	array[array.length] = (itemName + ".png");
-	createCookie(categoryIconKey, JSON.stringify(array),0);
+        }
+        
+        var array = JSON.parse(readCookie(categoryKey));
+        array[array.length] = (itemName);
+        createCookie(categoryKey, JSON.stringify(array),0);
+        array = JSON.parse(readCookie(categoryIconKey));
+        array[array.length] = (itemName + ".png");
+        createCookie(categoryIconKey, JSON.stringify(array),0);
 
-	
-	createCookie(toHex(itemName)+"_flag", "true",0);
-	
-	this.loadData();
-	reloadData(listTable);
+        
+        createCookie(toHex(itemName)+"_flag", "true",0);
+        
+        this.loadData();
+        reloadData(listTable);
 
     }
 
     function checkDoubleClickAtRow(row)
     {
-	if(this.lastClickRow == row && Math.abs(this.lastClickTime - Date.now()) < 500) 
-	{
+        if(this.lastClickRow == row && Math.abs(this.lastClickTime - Date.now()) < 500) 
+        {
 
-	    this.commitDeleteForRow(row);
-	    return true;
-	}
-	this.lastClickRow = row;
-	this.lastClickTime = Date.now();
-	return false;
+            this.commitDeleteForRow(row);
+            return true;
+        }
+        this.lastClickRow = row;
+        this.lastClickTime = Date.now();
+        return false;
     }
 
     function commitDeleteForRow(row)
@@ -475,79 +494,79 @@ function ItemsController(itemsTypeArg) {
 
     function loadData()
     {
-	var error;
-	var jsonString = 0;//[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-	
-	var root = 0;//(NSDictionary *)[jsonString objectFromJSONString];
-	
-	this.vegetables.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.vegetables, "vegetables", "vegetables_icons");
-	this.base_food.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.base_food, "base_food", "base_food_icons");
-	this.fruits.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.fruits, "fruits", "fruits_icons");
-	this.spices.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.spices, "spices", "spices_icons");
-	this.drinks.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.drinks, "drinks", "drinks_icons");
-	this.categories.length = 0;
-	this.loadDataFromJsonDictInArray(root, this.categories, "categories", "categories_icons");
-	
+        var error;
+        var jsonString = 0;//[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+        
+        var root = 0;//(NSDictionary *)[jsonString objectFromJSONString];
+        
+        this.vegetables.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.vegetables, "vegetables", "vegetables_icons");
+        this.base_food.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.base_food, "base_food", "base_food_icons");
+        this.fruits.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.fruits, "fruits", "fruits_icons");
+        this.spices.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.spices, "spices", "spices_icons");
+        this.drinks.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.drinks, "drinks", "drinks_icons");
+        this.categories.length = 0;
+        this.loadDataFromJsonDictInArray(root, this.categories, "categories", "categories_icons");
+        
     }
 
     function loadDataFromJsonDictInArray(root, array, nameKey, iconKey)
     {
-	var objectsArray = JSON.parse(readCookie(nameKey));
-	if(objectsArray == null)
-	    return;
-	var objectsIconsArray = JSON.parse(readCookie(iconKey));
-	if(objectsIconsArray == null)
-	    return;
+        var objectsArray = JSON.parse(readCookie(nameKey));
+        if(objectsArray == null)
+            return;
+        var objectsIconsArray = JSON.parse(readCookie(iconKey));
+        if(objectsIconsArray == null)
+            return;
 
-	for(var i = 0; i < objectsArray.length; ++i)
-	{
+        for(var i = 0; i < objectsArray.length; ++i)
+        {
             var item = new Object();
-	    item.name = objectsArray[i];
-	    item.itemIcon = objectsIconsArray[i];
+            item.name = objectsArray[i];
+            item.itemIcon = objectsIconsArray[i];
             array[array.length] = item;
-	}
+        }
 
-	array.sort(this.itemsSort);
+        array.sort(this.itemsSort);
     }
 
 
     function loadGetList()
     {    
-	this.listArray = new Array();
-	this.loadGetListForArray(this.vegetables);
-	this.loadGetListForArray(this.base_food);
-	this.loadGetListForArray(this.fruits);
-	this.loadGetListForArray(this.spices);
-	this.loadGetListForArray(this.drinks);
-	this.loadGetListForArray(this.categories);
+        this.listArray = new Array();
+        this.loadGetListForArray(this.vegetables);
+        this.loadGetListForArray(this.base_food);
+        this.loadGetListForArray(this.fruits);
+        this.loadGetListForArray(this.spices);
+        this.loadGetListForArray(this.drinks);
+        this.loadGetListForArray(this.categories);
     }
 
     function loadGetListForArray(array)
     {
-	for(var i = 0; i < array.length; ++i)
-	{
-	    if(readCookie(toHex(array[i].itemIcon)) && JSON.parse(readCookie(toHex(array[i].itemIcon)))) {
-		this.listArray[this.listArray.length] = array[i];
-	    }
-	}
+        for(var i = 0; i < array.length; ++i)
+        {
+            if(readCookie(toHex(array[i].itemIcon)) && JSON.parse(readCookie(toHex(array[i].itemIcon)))) {
+                this.listArray[this.listArray.length] = array[i];
+            }
+        }
     }
 
     function clearAllItems()
     {
-	for(i = 0; i < this.listArray.length; ++i)
-	{
-	    var item = this.listArray[i];
-	    createCookie(toHex(item.itemIcon), "", 0);
-	}
-	if(listTable)
-	{
-	    reloadData(listTable);
-	}
+        for(i = 0; i < this.listArray.length; ++i)
+        {
+            var item = this.listArray[i];
+            createCookie(toHex(item.itemIcon), "", 0);
+        }
+        if(listTable)
+        {
+            reloadData(listTable);
+        }
     }
 
     function setCustomIcon(itemName, event) {
@@ -555,19 +574,19 @@ function ItemsController(itemsTypeArg) {
         if(!event)
             event = window.event;
 
-	if(event.stopPropagation) {
-	    event.stopPropagation();
-	} else{ //IE 8
-	    e.cancelBubble = true;
-	}
+        if(event.stopPropagation) {
+            event.stopPropagation();
+        } else{ //IE 8
+            e.cancelBubble = true;
+        }
 
         var mpprompt = new MPPrompt();
-	var oldUrl = readCookie(toHex(itemName) + "_img");
-	if(!oldUrl) oldUrl = ""; //if null value set it to empty string
+        var oldUrl = readCookie(toHex(itemName) + "_img");
+        if(!oldUrl) oldUrl = ""; //if null value set it to empty string
 
         mpprompt.initWithContent("<p>Paste custom item image URL:<br /><input type=\"text\" value=\"" + oldUrl + "\"></p>");
-	function PromptDelegate() {
-	    this.buttonTouched = function buttonTouched(number) {
+        function PromptDelegate() {
+            this.buttonTouched = function buttonTouched(number) {
                 if(number == 0) {
                     var txtInput = document.querySelector('input[type=text]');
                     var iconURL = txtInput.value;
@@ -621,25 +640,25 @@ function ItemsController(itemsTypeArg) {
         {
             if(array[i] == item.itemIcon)
             {
-		if(readCookie(toHex(item.name) + "_flag"))
+                if(readCookie(toHex(item.name) + "_flag"))
                 {
 
 
-		    var result = confirm(localized("delete_question"));
-		    if(!result) {
-			return;
-		    }
+                    var result = confirm(localized("delete_question"));
+                    if(!result) {
+                        return;
+                    }
 
                     array.splice(i, 1);
-		    createCookie(categoryIconKey, JSON.stringify(array),0);
-		    array =  JSON.parse(readCookie(categoryKey));
+                    createCookie(categoryIconKey, JSON.stringify(array),0);
+                    array =  JSON.parse(readCookie(categoryKey));
                     array.splice(i, 1);
-		    createCookie(categoryKey, JSON.stringify(array),0);
+                    createCookie(categoryKey, JSON.stringify(array),0);
 
                     eraseCookie(toHex(item.name) + "_flag");
                     eraseCookie(toHex(item.name) + "_img");
                     
-		    this.loadData();
+                    this.loadData();
                     reloadData(listTable);
                 }
             }
@@ -651,18 +670,18 @@ function ItemsController(itemsTypeArg) {
 
     function itemsSort(num1, num2)
     {
-	var v1 = num1;
-	var v2 = num2;
-	
-	if(v1.name.length > 5 && v1.name.substring(0,5) == "other")
-	{
+        var v1 = num1;
+        var v2 = num2;
+        
+        if(v1.name.length > 5 && v1.name.substring(0,5) == "other")
+        {
             return -1;
-	}else if(v2.name.length > 5 && v2.name.substring(0,5) == "other")
-	{
+        }else if(v2.name.length > 5 && v2.name.substring(0,5) == "other")
+        {
             return 1;
-	}
-	
-	return localized(v1.name) > localized(v2.name)?1:0;
+        }
+        
+        return localized(v1.name) > localized(v2.name)?1:0;
     }
 
 }

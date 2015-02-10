@@ -40,20 +40,67 @@
     version without the exceptions above;
 */
 
+function mp_get_args() {
+  var length = window.location.href.length;
+  var paramStart = window.location.href.indexOf("?");
+  if(paramStart > 0) {
+      var params = window.location.href.substr(paramStart + 1, length - paramStart);
+    return params;
+  }
+  return "";
+}
 
-/*
- * MPNotifications
- */
-var mpNotifications = new function MPNotificaions()
-{
-    this.dict = new Object();
-    this.sendNotification = sendNotification;
-    this.registerForNotification = registerForNotification;
-    function sendNotification(notification) {
-        (this.dict[notification])(notification);
-    }
+function mp_get_version(message) {
+  var vEnd = message.indexOf("v");
+  if(vEnd > 0) {
+    var vStr = message.substr(0, vEnd);
+    return Number.parseInt(vStr);
+  }
+  return 0;
+}
 
-    function registerForNotification(receiverfunc, notification) {
-        this.dict[notification] = receiverfunc;
+function mp_read_message(message) {
+  var length = message.length;
+  var vStart = message.indexOf("=");
+  var result = "";
+  if(vStart > 0) {
+    var result = message.substr(vStart + 1, length - vStart - 1);
+    var endStr = result.indexOf("&");
+    if(endStr > 0) {
+      result = result.substr(0, endStr);
     }
+    return result;
+  }
+  return "";
+}
+
+function mp_extract_message(message) {
+  var vEnd = message.indexOf("v");
+  if(vEnd > 0) {
+    var extract = message.substr(vEnd + 1, message.length - vEnd - 1);
+    return extract;
+  }
+  return "";
+}
+
+function mp_parse_message() {
+    var url_args = mp_get_args();
+    var message = mp_read_message(url_args);
+    if(mp_get_version(message) == 1) {
+      var msg = mp_extract_message(message);
+      var argArray = msg.split(',');
+      for(var i = 0; i < argArray.length; ++i) {
+          var couple = argArray[i].split('_');
+          if(couple.length > 1) {
+              couple[0] = fromHex(couple[0]);
+              couple[1] = fromHex(couple[1]);
+          }else {
+              couple[0] = fromHex(couple[0]);
+              couple[1] = "";
+          }
+          argArray[i] = couple;
+      }
+      return argArray;
+    }
+    return new Array();
 }

@@ -1,5 +1,5 @@
 /*  Visual Shopping List for the Web
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -71,178 +71,178 @@ function ViewController() {
 
     function resetLocale()
     {
-	if(this.changeLanguage)
-	{
+        if(this.changeLanguage)
+        {
             var string = localized("change_language_title");
             if(string.length)
-	    {
-		if(string == "change_language_title")
-		{
-		    string = "Change language for this app";
-		}
-		this.changeLanguage.html("<h2>"+string+"</h2>");
-	    }
-	}
-	
-	if(this.getListLabel)
-	{
+            {
+                if(string == "change_language_title")
+                {
+                    string = "Change language for this app";
+                }
+                this.changeLanguage.html("<h2>"+string+"</h2>");
+            }
+        }
+        
+        if(this.getListLabel)
+        {
             var string = localized("get_list_title");
             if(string.length)
-	    {
-		if(string == "get_list_title")
-		{
-		    string = "Get List";
-		}
-		this.getListLabel.html("<h2>"+string+"</h2>");
-	    }
-	}
-	
-	if(this.baseFoodLabel)
-	{
+            {
+                if(string == "get_list_title")
+                {
+                    string = "Get List";
+                }
+                this.getListLabel.html("<h2>"+string+"</h2>");
+            }
+        }
+        
+        if(this.baseFoodLabel)
+        {
             var string = localized("base_food_title");
             if(string.length)
-	    {
-		if(string == "base_food_title")
-		{
-		    string = "Base Food";
-		}
+            {
+                if(string == "base_food_title")
+                {
+                    string = "Base Food";
+                }
 
-		this.baseFoodLabel.html("<h2>"+string+"</h2>");
-	    }
-	}
-	
-	if(this.vegetablesLabel)
-	{
+                this.baseFoodLabel.html("<h2>"+string+"</h2>");
+            }
+        }
+        
+        if(this.vegetablesLabel)
+        {
             var string = localized("vegetables_title");
             if(string.length)
-	    {
-		if(string == "vegetables_title")
-		{
-		    string = "Vegetables";
-		}
+            {
+                if(string == "vegetables_title")
+                {
+                    string = "Vegetables";
+                }
 
-		this.vegetablesLabel.html("<h2>"+string+"</h2>");
-	    }
-	}
-	
-	if(this.spicesLabel)
-	{
+                this.vegetablesLabel.html("<h2>"+string+"</h2>");
+            }
+        }
+        
+        if(this.spicesLabel)
+        {
             var string = localized("spices_title");
             if(string.length)
-	    {
-		if(string == "spices_title")
-		{
-		    string = "Spices";
-		}
+            {
+                if(string == "spices_title")
+                {
+                    string = "Spices";
+                }
 
-		this.spicesLabel.html("<h2>" + string + "</h2>");
-	    }
-	}
-	
-	if(this.fruitsLabel)
-	{
+                this.spicesLabel.html("<h2>" + string + "</h2>");
+            }
+        }
+        
+        if(this.fruitsLabel)
+        {
             var string = localized("fruits_title");
             if(string.length)
-	    {
-		if(string == "fruits_title")
-		{
-		    string = "Fruits";
-		}
+            {
+                if(string == "fruits_title")
+                {
+                    string = "Fruits";
+                }
 
-		this.fruitsLabel.html("<h2>" + string + "</h2>");
-	    }
-	}
-	
-	if(this.drinksLabel)
-	{
+                this.fruitsLabel.html("<h2>" + string + "</h2>");
+            }
+        }
+        
+        if(this.drinksLabel)
+        {
             var string = localized("drinks_title");
             if(string.length)
-	    {
-		if(string == "drinks_title")
-		{
-		    string = "Drinks";
-		}
+            {
+                if(string == "drinks_title")
+                {
+                    string = "Drinks";
+                }
 
-		this.drinksLabel.html("<h2>" + string + "</h2>");
-	    }
-	}
-	
-	if(this.categoriesLabel)
-	{
+                this.drinksLabel.html("<h2>" + string + "</h2>");
+            }
+        }
+        
+        if(this.categoriesLabel)
+        {
             var string = localized("categories_title");
             if(string.length)
-	    {
-		if(string == "categories_title")
-		{
-		    string = "Categories";
-		}
+            {
+                if(string == "categories_title")
+                {
+                    string = "Categories";
+                }
 
-		this.categoriesLabel.html("<h2>" + string + "</h2>");
-	    }
-	}
-	
-	if(this.aboutLabel)
-	{
+                this.categoriesLabel.html("<h2>" + string + "</h2>");
+            }
+        }
+        
+        if(this.aboutLabel)
+        {
             var string = localized("about_title");
             if(string.length)
-	    {
-		if(string == "about_title")
-		{
-		    string = "About";
-		}
+            {
+                if(string == "about_title")
+                {
+                    string = "About";
+                }
 
-		this.aboutLabel.html("<h2>" + string + "</h2>");
-	    }
-	}
-	
+                this.aboutLabel.html("<h2>" + string + "</h2>");
+            }
+        }
+        
     }
 
     function viewDidLoad()
     {
 
-	this.changeLanguage = $("#language_btn", this.mp_view);
-	this.getListLabel = $("#btn_getlist", this.mp_view);
-	this.baseFoodLabel = $("#btn_basefood", this.mp_view);
-	this.vegetablesLabel = $("#btn_vegetables", this.mp_view);
-	this.spicesLabel = $("#btn_spices", this.mp_view);
-	this.fruitsLabel = $("#btn_fruits", this.mp_view);
-	this.drinksLabel = $("#btn_drinks", this.mp_view);
-	this.categoriesLabel = $("#btn_categories", this.mp_view);
-	this.aboutLabel = $("#btn_about_us", this.mp_view);
+        this.changeLanguage = $("#language_btn", this.mp_view);
+        this.getListLabel = $("#btn_getlist", this.mp_view);
+        this.baseFoodLabel = $("#btn_basefood", this.mp_view);
+        this.vegetablesLabel = $("#btn_vegetables", this.mp_view);
+        this.spicesLabel = $("#btn_spices", this.mp_view);
+        this.fruitsLabel = $("#btn_fruits", this.mp_view);
+        this.drinksLabel = $("#btn_drinks", this.mp_view);
+        this.categoriesLabel = $("#btn_categories", this.mp_view);
+        this.aboutLabel = $("#btn_about_us", this.mp_view);
 
     }
 
     function viewAppeared()
     {
-    	this.resetLocale();
+        this.resetLocale();
     }
     
     // function dealloc()
     // {
-    // 	self.getListButton = nil;
-    // 	self.baseFoodButton = nil;
-    // 	self.vegetablesButton = nil;
-    // 	self.spicesButton = nil;
-    // 	self.fruitsButton = nil;
-    // 	self.drinksButton = nil;
-    // 	self.categoriesButton = nil;
-    // 	self.aboutButton = nil;
-    // 	self.changeLanguage = nil;
-    // 	self.getListLabel = nil;
-    // 	self.baseFoodLabel = nil;
-    // 	self.vegetablesLabel = nil;
-    // 	self.spicesLabel = nil;
-    // 	self.fruitsLabel = nil;
-    // 	self.drinksLabel = nil;
-    // 	self.categoriesLabel = nil;
-    // 	self.aboutLabel = nil;
-	
-    // 	[super dealloc];
+    //  self.getListButton = nil;
+    //  self.baseFoodButton = nil;
+    //  self.vegetablesButton = nil;
+    //  self.spicesButton = nil;
+    //  self.fruitsButton = nil;
+    //  self.drinksButton = nil;
+    //  self.categoriesButton = nil;
+    //  self.aboutButton = nil;
+    //  self.changeLanguage = nil;
+    //  self.getListLabel = nil;
+    //  self.baseFoodLabel = nil;
+    //  self.vegetablesLabel = nil;
+    //  self.spicesLabel = nil;
+    //  self.fruitsLabel = nil;
+    //  self.drinksLabel = nil;
+    //  self.categoriesLabel = nil;
+    //  self.aboutLabel = nil;
+        
+    //  [super dealloc];
     // }
 
     // function shouldAutorotateToInterfaceOrientation(interfaceOrientation);
     // {
-    // 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //  return (interfaceOrientation == UIInterfaceOrientationPortrait);
     // }
 
 
@@ -250,56 +250,56 @@ function ViewController() {
 
     // function  getListAction()
     // {
-    // 	var ctl = ItemsController(kESGetList);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESGetList);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  baseFoodAction()
     // {
-    // 	var ctl = ItemsController(kESBaseFood);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESBaseFood);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  vegetablesAction()
     // {
-    // 	var ctl = ItemsController(kESVegetables);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESVegetables);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  spicesAction()
     // {
-    // 	var ctl = ItemsController(kESSpices);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESSpices);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  fruitsAction()
     // {
-    // 	var ctl = ItemsController(kESFruits);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESFruits);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  drinksAction()
     // {
-    // 	var ctl = ItemsController(kESDrinks);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESDrinks);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  categoriesAction()
     // {
-    // 	var ctl = ItemsController(kESCategories);
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = ItemsController(kESCategories);
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  aboutAction()
     // {
-    // 	var ctl = AboutController();
-    // 	[self.navigationController pushViewController:ctl animated:YES];
+    //  var ctl = AboutController();
+    //  [self.navigationController pushViewController:ctl animated:YES];
     // }
 
     // function  chooseLanguage()
     // {
-    // 	var chooseLanguage = ChooseLanguageViewController();
-    // 	[self.navigationController pushViewController:chooseLanguage animated:YES];
+    //  var chooseLanguage = ChooseLanguageViewController();
+    //  [self.navigationController pushViewController:chooseLanguage animated:YES];
     // }
 
 

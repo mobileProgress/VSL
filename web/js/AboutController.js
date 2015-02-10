@@ -1,5 +1,5 @@
 /*  Visual Shopping List for the Web
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -85,66 +85,66 @@ function AboutController()
     function viewDidLoad()
     {
 
-	this.aboutUs = this.mp_view.children("#about_link");
-	this.contactUs = this.mp_view.children("#contact_link");
-	this.twitter = this.mp_view.children("#share_link");
+        this.aboutUs = this.mp_view.children("#about_link");
+        this.contactUs = this.mp_view.children("#contact_link");
+        this.twitter = this.mp_view.children("#share_link");
     
-	this.description = this.mp_view.children("#about_desc");
+        this.description = this.mp_view.children("#about_desc");
 
-	if(this.description)
-	{
+        if(this.description)
+        {
             var desc = localized("description");
             if(desc)
-		this.description.text(desc);
-	}
-	
-	if(this.aboutUs)
-	{
+                this.description.text(desc);
+        }
+        
+        if(this.aboutUs)
+        {
             var string = localized("about_us");
             if(string)
-		this.aboutUs.text(string);
-	}
+                this.aboutUs.text(string);
+        }
 
-	if(this.contactUs)
-	{
+        if(this.contactUs)
+        {
             var string = localized("contact_us");
             if(string)
-		this.contactUs.text(string);
-	}
+                this.contactUs.text(string);
+        }
 
-	if(this.twitter)
-	{
+        if(this.twitter)
+        {
             var string = localized("share_this_app");
             if(string)
-		this.twitter.text(string);
-	}
-	
+                this.twitter.text(string);
+        }
+        
     }
 
     // function viewDidUnload()
     // {
-    // 	this.aboutUs = 0;
-    // 	this.contactUs = 0;
-    // 	this.twitter = 0;
-    // 	this.description = 0;
+    //  this.aboutUs = 0;
+    //  this.contactUs = 0;
+    //  this.twitter = 0;
+    //  this.description = 0;
     // }
 
     // function shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     // {
-    // 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //  return (interfaceOrientation == UIInterfaceOrientationPortrait);
     // }
 
     // function viewWillAppear(animated)
     // {
-    // 	[[self navigationController] setNavigationBarHidden:NO animated:animated];
-    // 	[[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlack];
+    //  [[self navigationController] setNavigationBarHidden:NO animated:animated];
+    //  [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlack];
     // }
 
 //#pragma mark Actions
 
     function aboutUsAction()
     {
-	//[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mobileprogressive.com"]];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mobileprogressive.com"]];
     }
 
     function contactUsAction()

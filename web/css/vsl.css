@@ -285,3 +285,10 @@ div#vsl_aboutus {
     height: 30px;
     margin: 0px;
 }
+
+/* email/backup button */
+.vsl_accessory img.save_button {
+    float:left;
+    height: 44px;
+    margin-top: -10px;
+}

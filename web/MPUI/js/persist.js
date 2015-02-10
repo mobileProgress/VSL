@@ -1,5 +1,5 @@
 /*  MPUI
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -47,17 +47,20 @@ function toHex(str) {
     var h1 = 0, h2 = 0;
     var hexnum = 0;
     for(var i=0;i<str.length;i++) {
-	var num = str.charCodeAt(i);
-	if(num > 127) {
-	    h1 = num & 0x7C0;
-	    h1 = h1 >> 6;
-	    h1 = h1 | 0xC0;
-	    h2 = num & 0x3F;
-	    h2 = h2 | 0x80;
-	    hexnum = (h1.toString(16)) + (h2.toString(16));
-	}else {
-	    hexnum = num.toString(16);
-	}
+        var num = str.charCodeAt(i);
+        if(num == 0 && i == str.length - 1) {
+            break;
+        }
+        if(num > 127) {
+            h1 = num & 0x7C0;
+            h1 = h1 >> 6;
+            h1 = h1 | 0xC0;
+            h2 = num & 0x3F;
+            h2 = h2 | 0x80;
+            hexnum = (h1.toString(16)) + (h2.toString(16));
+        }else {
+            hexnum = num.toString(16);
+        }
         hex += hexnum;
     }
     return hex;
@@ -66,17 +69,17 @@ function toHex(str) {
 function fromHex(hex) {
     var str = '';
     for(var i=0;i<hex.length;i=i+2) {
-	var num = Number("0x" + hex.substring(i, i + 2));
-	if(num > 127)
-	{
-	    num = Number("0x" + hex.substring(i, i + 4));
-	    i=i+2;
-	    var n1 = num & 0x3F;
-	    var n2 = num & 0x1F00;
-	    n2 = n2 >> 2;
-	    num = n1 | n2;
-	}
-	str += String.fromCharCode(num);
+        var num = Number("0x" + hex.substring(i, i + 2));
+        if(num > 127)
+        {
+            num = Number("0x" + hex.substring(i, i + 4));
+            i=i+2;
+            var n1 = num & 0x3F;
+            var n2 = num & 0x1F00;
+            n2 = n2 >> 2;
+            num = n1 | n2;
+        }
+        str += String.fromCharCode(num);
     }
     return str;
 }
@@ -89,14 +92,14 @@ function fromHex(hex) {
  */
 function createCookie(name,value,days) {
     if(days == 0)
-	days = expDays;
+        days = expDays;
     if(days == -1)
-	days = 0;
+        days = 0;
     value = toHex(value);
     if (days) {
-	var date = new Date();
-	date.setTime(date.getTime()+(days*24*60*60*1000));
-	var expires = "; expires="+ new Date(date).toGMTString();
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+ new Date(date).toGMTString();
     }
     else var expires = "";
     document.cookie = name+"="+value+expires + "; path=/";
@@ -106,13 +109,13 @@ function readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
-	var c = ca[i];
-	while (c.charAt(0)==' ') c = c.substring(1,c.length);
-	if (c.indexOf(nameEQ) == 0) {
-	    var result = c.substring(nameEQ.length,c.length);
-	    result = fromHex(result);
-	    return result;
-	}
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            var result = c.substring(nameEQ.length,c.length);
+            result = fromHex(result);
+            return result;
+        }
     }
     return null;
 }
@@ -127,7 +130,7 @@ function enableCookie() {
 //if not IE4+ nor NS6+
     if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
 document.cookie="testcookie"
-	cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false
+        cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false
     }
 
 //if (cookieEnabled) //if cookies are enabled on client's browser

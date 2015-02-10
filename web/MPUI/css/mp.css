@@ -190,6 +190,10 @@ div {
     text-align: center;
 }
 
+.prompt_inside p {
+    margin: 5px;
+}
+
 .prompt_buttons {
     width: 100%;
     text-align: center;
@@ -206,4 +210,10 @@ div {
     border-right: 1px solid #333;
     width: 50%;
     float: left;
+}
+
+.pr_button_single {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
 }

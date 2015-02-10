@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# serial number 1.1.1
+# serial number 1.2
 
 CACHE:
 js/GPL.txt
@@ -82,7 +82,6 @@ images/salt@2x.png
 images/infinity.png
 images/corn.png
 images/books@2x.png
-images/Natural-Help-for-Arthritis-Pain-with-Cherry-Juice@2x.png
 images/salt.png
 images/wine.png
 images/brendy.png
@@ -241,8 +240,9 @@ images/cherries.png
 images/yogurt@2x.png
 images/shoes@2x.png
 images/clothing@2x.png
-images/Natural-Help-for-Arthritis-Pain-with-Cherry-Juice.png
 images/cucumbers.png
 images/splashscreen.png
 images/coffee@2x.png
+images/sync.png
+images/sync@2x.png
 COPYING.txt

@@ -1,5 +1,5 @@
 /*  Visual Shopping List for the Web
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -83,9 +83,9 @@ function ChooseLanguageViewController()
 
     function viewDidLoad()
     {
-	langTable = this.mp_view.children(".mp_list");
-	langTable.delegate = this;
-	reloadData(langTable);
+        langTable = this.mp_view.children(".mp_list");
+        langTable.delegate = this;
+        reloadData(langTable);
     }
 
 // function viewDidUnload
@@ -99,29 +99,29 @@ function ChooseLanguageViewController()
 
     // function dealloc
     // {
-    // 	self.table = nil;
-    // 	self.bulgarian = nil;
-    // 	self.russian = nil;
-    // 	self.english = nil;
-    // 	self.systemLanguage = nil;
+    //  self.table = nil;
+    //  self.bulgarian = nil;
+    //  self.russian = nil;
+    //  self.english = nil;
+    //  self.systemLanguage = nil;
     // }
 
     // function shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     // {
-    // 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //  return (interfaceOrientation == UIInterfaceOrientationPortrait);
     // }
 
 //#pragma mark table view data source
 
     function numberOfRows(listTable)
     {
-	return 4;
+        return 4;
     }
 
     function cellForRowCol(listTable, row, col)
     {
-	var cell = "<li class=\"mp_list_item\" onClick=\"langTable.delegate.didSelectRow("+ row +");\">";
-	switch (row) {
+        var cell = "<li class=\"mp_list_item\" onClick=\"langTable.delegate.didSelectRow("+ row +");\">";
+        switch (row) {
         case 0:
             cell = cell + this.bulgarian;
             break;
@@ -138,38 +138,38 @@ function ChooseLanguageViewController()
         default:
             cell = cell + this.systemLanguage;
             break;
-	}
-	return cell;
+        }
+        return cell;
     }
 
     //#pragma mark table view delegate
 
     function didSelectRow(row)
     {
-	switch (row) {
-	case 0:
-	    createCookie("userLang", "bg",0);
-	    loadLocale("bg");
+        switch (row) {
+        case 0:
+            createCookie("userLang", "bg",0);
+            loadLocale("bg");
             break;
-	case 1:
-	    createCookie("userLang", "ru",0);
-	    loadLocale("ru");
+        case 1:
+            createCookie("userLang", "ru",0);
+            loadLocale("ru");
             break;
-	case 2:
-	    createCookie("userLang", "en",0);
-	    loadLocale("en");
+        case 2:
+            createCookie("userLang", "en",0);
+            loadLocale("en");
             break;
-	case 3:
-	    createCookie("userLang", "",0);
-	    initLocale();
+        case 3:
+            createCookie("userLang", "",0);
+            initLocale();
             break;
             
-	default:
-	    createCookie("userLang", "",0);
-	    initLocale();
+        default:
+            createCookie("userLang", "",0);
+            initLocale();
             break;
-	}
-	mpWin.popControllerView(true);
+        }
+        mpWin.popControllerView(true);
     }
 
 

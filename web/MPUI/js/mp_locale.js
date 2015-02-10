@@ -1,5 +1,5 @@
 /*  MPUI
-    Copyright (C) 2013 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -54,20 +54,20 @@ function initLocale()
 {
     var lang = readCookie("userLang");;
     if(!lang || !lang.length)
-	lang = navigator.language;
+        lang = navigator.language;
     if(!lang)
-	lang = navigator.browserLanguage; //ie
+        lang = navigator.browserLanguage; //ie
     if(!lang)
-	lang = navigator.systemLanguage; //ie
+        lang = navigator.systemLanguage; //ie
     if(!lang)
-	lang = navigator.userLanguage;
+        lang = navigator.userLanguage;
 
     if(lang.length > 2)
-	lang = lang.substring(0, 2);
+        lang = lang.substring(0, 2);
 
     if(!lang)
     {
-	lang = "en" //fall back to en locale
+        lang = "en" //fall back to en locale
     }
 
     loadLocale(lang);
@@ -80,8 +80,8 @@ function initLocale()
 function loadLocale(lang)
 {
     $.ajax('./js/' + lang + '_string.json').done(function (data){
-	localeObj = data;
-	mpNotifications.sendNotification(mp_locale_loaded);
+        localeObj = data;
+        mpNotifications.sendNotification(mp_locale_loaded);
     });
 }
 
@@ -96,7 +96,7 @@ function localized(key)
     var retStr = localeObj[key];
     if(retStr)
     {
-	return retStr;
+        return retStr;
     }
     return key; //fall back to the keyp
 }

@@ -1,5 +1,5 @@
 /*  MPUI
-    Copyright (C) 2013-2014 Мобилен прогрес ЕООД, София, България
+    Copyright (C) 2013-2015 Мобилен прогрес ЕООД, София, България
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -59,6 +59,7 @@ function MPPrompt() {
     
     this.init = init;
     this.initWithContent = initWithContent;
+    this.initWithContentAndButtons = initWithContentAndButtons;
     this.show = show;
     this.remove = remove;
     this.buttonTouched = buttonTouched;
@@ -80,6 +81,10 @@ function MPPrompt() {
     }
 
     function initWithContent(content) {
+        this.initWithContentAndButtons(content, "Ok", "Cancel");
+    }
+
+    function initWithContentAndButtons(content, confirmButtonText, cancelButtonText) {
         //.prompt_back is the layer on top of the screen which prevents touches
         //outside of the prompt. It is also the background shading.
         //#prompt_root is the id of the root element of all prompt elements
@@ -89,7 +94,12 @@ function MPPrompt() {
         //.prompt_content is the layer which contains all prompt sublayers and the prompt borders.
         //.prompt_inside is the layer with prompt text, input, etc. It is on
         //top of the .prompt_buttons layer which holds the buttons.
-        this.mp_view = "<div id=\"prompt_root\" class=\"prompt_back\" onclick=\"kMPPromptVisible.prompt_click(event)\"><div class=\"prompt\" ><div class=\"prompt_content\"><div class=\"prompt_inside\">"+content+"</div><div class=\"prompt_buttons\" ><div class=\"pr_button_left\" onclick=\"kMPPromptVisible.buttonTouched(0)\">Ok</div><div class=\"pr_button_right\" onclick=\"kMPPromptVisible.buttonTouched(1)\">Cancel</div></div></div></div></div>";
+        if(cancelButtonText.length > 0) {
+            this.mp_view = "<div id=\"prompt_root\" class=\"prompt_back\" onclick=\"kMPPromptVisible.prompt_click(event)\"><div class=\"prompt\" ><div class=\"prompt_content\"><div class=\"prompt_inside\">"+content+"</div><div class=\"prompt_buttons\" ><div class=\"pr_button_left\" onclick=\"kMPPromptVisible.buttonTouched(0)\">" + confirmButtonText + "</div><div class=\"pr_button_right\" onclick=\"kMPPromptVisible.buttonTouched(1)\">" + cancelButtonText +  "</div></div></div></div></div>";
+        }else {
+            this.mp_view = "<div id=\"prompt_root\" class=\"prompt_back\" onclick=\"kMPPromptVisible.prompt_click(event)\"><div class=\"prompt\" ><div class=\"prompt_content\"><div class=\"prompt_inside\">"+content+"</div><div class=\"prompt_buttons\" ><div class=\"pr_button_single\" onclick=\"kMPPromptVisible.buttonTouched(0)\">" + confirmButtonText + "</div></div></div></div></div>";
+
+        }
     }
 
     function show() {
@@ -97,19 +107,19 @@ function MPPrompt() {
             return;
         kMPPromptVisible = this;
 
-	var scrollTop = mpGetScrollPosition() + "px";
+        var scrollTop = mpGetScrollPosition() + "px";
 
         $("body").children().last().after(this.mp_view);
 
         //adjust prompt geometry
         $("#prompt_root").height(document.documentElement.scrollHeight + "px");
         $("#prompt_root").width(document.documentElement.scrollWidth + "px");
-	var prompt = $(".prompt");
-	prompt[0].style.top = scrollTop;
-	prompt.height(window.innerHeight + "px");
-	prompt.width((window.innerWidth*0.8) + "px");
-	prompt[0].style.left = (window.innerWidth*0.1) + "px";
-	var prompt_content = $(".prompt_content");
+        var prompt = $(".prompt");
+        prompt[0].style.top = scrollTop;
+        prompt.height(window.innerHeight + "px");
+        prompt.width((window.innerWidth*0.8) + "px");
+        prompt[0].style.left = (window.innerWidth*0.1) + "px";
+        var prompt_content = $(".prompt_content");
         prompt_content[0].style.top = (prompt.height() - prompt_content[0].offsetHeight) / 2 + "px";
     }
 
@@ -121,11 +131,11 @@ function MPPrompt() {
     }
 
     function remove() {
-	var inserted = $("#prompt_root");
+        var inserted = $("#prompt_root");
         if(inserted) {
             inserted.remove(); //remove the view from the DOM
         }
-	kMPPromptVisible = 0; //latest displayed prompt
+        kMPPromptVisible = 0; //latest displayed prompt
     }
 
 }

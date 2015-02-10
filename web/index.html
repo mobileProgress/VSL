@@ -23,7 +23,7 @@
   <div class="mp_screen mp_hidden" id="vsl_language">
     <div class="mp_title_bar">
       <div class="mp_bar_back_button">
-    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
+        <a href="#" onClick="mpWin.popControllerView(true);">Back</a>
       </div>
       <div class="mp_bar_title">Choose Language</div>
     </div>
@@ -33,7 +33,7 @@
   <div class="mp_screen mp_hidden" id="vsl_aboutus">
     <div class="mp_title_bar">
       <div class="mp_bar_back_button">
-    	<a href="#" onClick="mpWin.popControllerView(true);">Back</a>
+        <a href="#" onClick="mpWin.popControllerView(true);">Back</a>
       </div>
       <div class="mp_bar_title">About us</div>
     </div>
@@ -43,23 +43,23 @@
     </div>
     <div class="vsl_about_footer">
       <div class="mp_about_buttons">
-	<a href="http://www.mobileprogressive.com" id="about_link">About Us</a>
+        <a href="http://www.mobileprogressive.com" id="about_link">About Us</a>
       </div>
       <div class="mp_about_buttons">
-	<a href="mailto://contactus@mobileprogressive.com" id="contact_link">Contact Us</a>
+        <a href="mailto://contactus@mobileprogressive.com" id="contact_link">Contact Us</a>
       </div>
       <div class="mp_about_buttons">
-	<a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fmobileprogressive.com&text=Visual+Shopping+List+for+the+web+&via=MobileProgres" id="share_link">Share this app</a>
+        <a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fmobileprogressive.com&text=Visual+Shopping+List+for+the+web+&via=MobileProgres" id="share_link">Share this app</a>
       </div>
     </div>
   </div>
   <div class="mp_screen mp_hidden" id="vsl_products">
     <div class="mp_title_bar">
       <div class="mp_bar_back_button">
-    	<span onClick="mpWin.popControllerView(true);">Back</span>
+        <span onClick="mpWin.popControllerView(true);">Back</span>
       </div>
       <div class="mp_bar_button">
-    	<span>Select All</span>
+        <span>Select All</span>
       </div>
       <div class="mp_bar_title">Products</div>
     </div>
@@ -70,47 +70,50 @@
   <div class="mp_window print">
     <div class="mp_screen" id="vsl_ViewController">
       <div class="vsl_category_row">
-	<div class="vsl_category" id="btn_getlist" onClick="pushProduct(0)">
-	  <h2>Get List</h2>
-	</div>
+        <div class="vsl_category" id="btn_getlist" onClick="pushProduct(0)">
+          <h2>Get List</h2>
+        </div>
       </div>
       <div class="vsl_category_row">
-	<div class="vsl_category_left" id="btn_basefood" onClick="pushProduct(2)">
-	  <h2>Base Food</h2>
-	</div>
-	<div class="vsl_category_right" id="btn_vegetables" onClick="pushProduct(1)">
-	  <h2>Vegetables</h2>
-	</div>
+        <div class="vsl_category_left" id="btn_basefood" onClick="pushProduct(2)">
+          <h2>Base Food</h2>
+        </div>
+        <div class="vsl_category_right" id="btn_vegetables" onClick="pushProduct(1)">
+          <h2>Vegetables</h2>
+        </div>
       </div>
       <div class="vsl_category_row">
-	<div class="vsl_category_left" id="btn_fruits" onClick="pushProduct(3)">
-	  <h2>Fruits</h2>
-	</div>
-	<div class="vsl_category_right" id="btn_spices" onClick="pushProduct(4)">
-	  <h2>Spices</h2>
-	</div>
+        <div class="vsl_category_left" id="btn_fruits" onClick="pushProduct(3)">
+          <h2>Fruits</h2>
+        </div>
+        <div class="vsl_category_right" id="btn_spices" onClick="pushProduct(4)">
+          <h2>Spices</h2>
+        </div>
       </div>
       <div class="vsl_category_row">
-	<div class="vsl_category_left" id="btn_drinks" onClick="pushProduct(5)">
-	  <h2>Drinks</h2>
-	</div>
-	<div class="vsl_category_right" id="btn_categories" onClick="pushProduct(6)">
-	  <h2>Categories</h2>
-	</div>
+        <div class="vsl_category_left" id="btn_drinks" onClick="pushProduct(5)">
+          <h2>Drinks</h2>
+        </div>
+        <div class="vsl_category_right" id="btn_categories" onClick="pushProduct(6)">
+          <h2>Categories</h2>
+        </div>
       </div>
       <div class="vsl_main_footer">
-	<div id="language_btn" onClick="pushLanguage()">
-	  <h2>Change language </br> for this app</h2>
-	</div>
-	<div id="btn_about_us" onClick="pushAbout();">
-	</div>
+        <div id="language_btn" onClick="pushLanguage()">
+          <h2>Change language </br> for this app</h2>
+        </div>
+        <div id="btn_about_us" onClick="pushAbout();">
+        </div>
       </div>
-        <div style="position:absolute; top:0; left:0;" >
-	  <span>v1.1.1</span>
-	</div>
-	<div style="position:absolute; top:0; right:0;" >
-	  <a href="#" onClick="resetVSLData();">Reset data</a>
-	</div>
+      <div style="position:absolute; top:0; left:0;" >
+        <span>v1.2 dev 08.02.2015</span>
+      </div>
+      <div style="position:absolute; top:0; right:0;" >
+        <a href="#" onClick="resetVSLData();">Reset data</a>
+      </div>
+      <div style="position:absolute; top:40px; right:5px;">
+        <a href="#" onClick="save_url_data()"><img src="images/sync@2x.png" width="60" height="44" class=\"save_button\" /></a>
+      </div>
     </div>
   </div>
   <script src="MPUI/js/persist.js"></script>
@@ -118,6 +121,7 @@
   <script src="MPUI/js/mp_locale.js"></script>
   <script src="MPUI/js/mp_ui.js"></script>
   <script src="MPUI/js/mp_prompt.js"></script>
+  <script src="MPUI/js/mp_storage.js"></script>
   <script src="js/itemsjson.js"></script>
   <script src="js/ItemsController.js"></script>
   <script src="js/AboutController.js"></script>
