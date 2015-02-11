@@ -128,8 +128,7 @@ div {
     margin: 0px;
     width: 100%;
     padding: 0px;
-
-
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .mp_list_item {
@@ -138,8 +137,7 @@ div {
     border-right: 1px solid #333;
     height: 20px;
     padding: 10px;
-
-
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .mp_list_item img {

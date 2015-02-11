@@ -54,7 +54,7 @@ function mp_get_version(message) {
   var vEnd = message.indexOf("v");
   if(vEnd > 0) {
     var vStr = message.substr(0, vEnd);
-    return Number.parseInt(vStr);
+    return parseInt(vStr);
   }
   return 0;
 }
