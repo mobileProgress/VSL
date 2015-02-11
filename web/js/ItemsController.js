@@ -380,6 +380,9 @@ function ItemsController(itemsTypeArg) {
         var checked = readCookie(toHex(this.listArray[row].itemIcon));
         createCookie(toHex(this.listArray[row].itemIcon),((!checked)?"true":""),0);
         
+        if(this.itemsType == kESGetList)
+            checked = !checked;
+
         var lists = document.getElementsByTagName("ul");
         if(lists.length > 0) {
             var theList = lists[lists.length - 1].getElementsByTagName("li");
