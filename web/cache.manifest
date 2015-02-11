@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-## Serial number 1.2
+## Serial number 1.2 
 
 MPUI
 MPUI/js
@@ -10,6 +10,7 @@ MPUI/js/mp_notifications.js
 MPUI/js/mp_ui.js
 MPUI/js/test.js
 MPUI/js/mp_prompt.js
+MPUI/js/mp_storage.js
 MPUI/VERSION
 MPUI/LICENSE
 MPUI/css
