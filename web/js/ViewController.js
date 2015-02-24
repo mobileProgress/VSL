@@ -188,7 +188,7 @@ function ViewController() {
             {
                 if(string == "about_title")
                 {
-                    string = "About";
+                    string = "Info";
                 }
 
                 this.aboutLabel.html("<h2>" + string + "</h2>");

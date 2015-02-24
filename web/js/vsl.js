@@ -120,30 +120,31 @@ function pushLanguage() {
 }
 
 function resetVSLData() {
-    // eraseCookie("isFirstLaunch");
-    // eraseCookie("categories");
-    // eraseCookie("drinks");
-    // eraseCookie("spices");
-    // eraseCookie("fruits");
-    // eraseCookie("base_food");
-    // eraseCookie("vegetables");
-    // eraseCookie("userLang");
-    // //clear locale
-    // document.cookie = "";
 
-    var cookies = document.cookie.split(";");
+    var mpprompt = new MPPrompt();
 
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        // document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        createCookie(name, "",0);
+    mpprompt.initWithContentAndButtons("<p>Do you want to reset all app data?</p>", "Yes", "No");
+    function PromptDelegate() {
+        this.buttonTouched = function buttonTouched(number) {
+            if(number == 0) {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    var eqPos = cookie.indexOf("=");
+                    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                    // document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    createCookie(name, "",0);
+                }
+
+                initLocale();
+                initJSONCookies();
+                createCookie("isFirstLaunch", "true", 0);
+            }
+        }
     }
-
-    initLocale();
-    initJSONCookies();
-    createCookie("isFirstLaunch", "true", 0);
+    mpprompt.delegate = new PromptDelegate();
+    mpprompt.show();
 }
 
 function prompt_load_url_data() {
